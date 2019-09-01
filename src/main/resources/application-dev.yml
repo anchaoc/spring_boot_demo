@@ -10,6 +10,15 @@ spring:
     password: root
     url: jdbc:mysql://localhost:3306/anchao_dev?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=CONVERT_TO_NULL
 
+#邮件
+  mail:
+    host: smtp.163.com
+    username: cchaoan@163.com
+    password: ac221613 #这里是授权码
+    default-encoding: UTF-8
+
+
+
 #持久层 mybatis-springboot
 mybatis:
   configuration:
@@ -23,3 +32,4 @@ threadpool:
   max-pool-size: 20
   queue-capacity: 1000
   keep-alive-seconds: 300
+
