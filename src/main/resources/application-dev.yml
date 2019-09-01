@@ -2,7 +2,7 @@
 server:
   port: 8081
 
-#数据源
+#数据源 mysql 8.0.16
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver

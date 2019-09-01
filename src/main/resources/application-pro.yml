@@ -1,14 +1,14 @@
 # 服务端口
 server:
-  port: 8080
+  port: 8082
 
-#数据源
+#数据源 mysql 5.7
 spring:
   datasource:
     driverClassName: com.mysql.jdbc.Driver
     username: root
     password:
-    url: jdbc:mysql://192.168.0.106:3306/test_dev?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    url: jdbc:mysql://192.168.0.106:3306/test_dev?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=CONVERT_TO_NULL
 
 #持久层 mybatis-springboot
 mybatis:
@@ -16,3 +16,10 @@ mybatis:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   type-aliases-package: com.ac.model
   mapper-locations: classpath:mapper/*.xml
+
+#线程池
+threadpool:
+  core-pool-size: 10
+  max-pool-size: 20
+  queue-capacity: 1000
+  keep-alive-seconds: 300
