@@ -1,0 +1,18 @@
+# 服务端口
+server:
+  port: 8081
+
+#数据源
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/anchao_dev?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+
+#持久层 mybatis-springboot
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  type-aliases-package: com.ac.model
+  mapper-locations: classpath:mapper/*.xml
