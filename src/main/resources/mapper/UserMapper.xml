@@ -6,10 +6,12 @@
         <result column="name" property="name" jdbcType="VARCHAR"/>
     </resultMap>
 
-
+    <sql id="user_result">
+        ID,NAME
+    </sql>
 
     <select id="queryUser" resultMap="BaseResultMap">
-        SELECT * FROM test_user
+        SELECT <include refid="user_result"/> FROM test_user
     </select>
 
 
