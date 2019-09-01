@@ -12,4 +12,9 @@
         SELECT * FROM test_user
     </select>
 
+
+    <insert id="batchSave" parameterType="com.ac.model.User">
+        INSERT INTO test_user(name) VALUES(#{name})
+    </insert>
+
 </mapper>

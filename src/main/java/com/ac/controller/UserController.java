@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * @author anchao
- * 
+ *
  */
 @Controller
 @RequestMapping("/user")
@@ -32,5 +32,18 @@ public class UserController {
     @ResponseBody
     public List<User> getUser(){
         return userService.queryUser();
+    }
+
+    /**
+     * 批量插入
+     */
+    @GetMapping("/batchSave")
+    public void batchSave(){
+        User u;
+        for (int i = 0; i <5 ; i++) {
+            u =new User();
+            u.setName("an"+i);
+            userService.batchSave(u);
+        }
     }
 }

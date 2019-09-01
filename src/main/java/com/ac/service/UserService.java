@@ -11,4 +11,5 @@ public interface UserService {
 
     List<User> queryUser();
 
+    void batchSave(User u);
 }
