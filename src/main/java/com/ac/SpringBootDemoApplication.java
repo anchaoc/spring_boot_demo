@@ -8,6 +8,11 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
+ * 1.开启异步
+ * 2.开启事务管理
+ * 3.开启定时
+ * 4.mybatis扫描dao
+ *
  * @author anchao
  */
 @SpringBootApplication
