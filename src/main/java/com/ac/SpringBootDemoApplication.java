@@ -6,12 +6,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * 1.开启异步
  * 2.开启事务管理
  * 3.开启定时
  * 4.mybatis扫描dao
+ * 5.swagger2 api
  *
  * @author anchao
  */
@@ -19,6 +21,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableAsync
 @EnableTransactionManagement
 @EnableScheduling
+@EnableSwagger2
 @MapperScan("com.ac.dao")
 public class SpringBootDemoApplication {
 
