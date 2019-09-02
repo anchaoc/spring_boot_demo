@@ -41,6 +41,7 @@ public class UserController {
 
     @ApiOperation(value = "获取某个用户信息", produces = "application/json")
     @GetMapping("/getUserInfo/{id}")
+    @ResponseBody
     public User getUserInfo(@PathVariable("id") Long id){
         return userService.getUserInfo(id);
     }
