@@ -26,6 +26,13 @@ public class UserController {
         this.userService = userService;
     }
 
+    @ApiOperation(value = "hi", produces = "application/json")
+    @GetMapping("/hi")
+    @ResponseBody
+    public String hi(){
+        return "hi ~!";
+    }
+
     @ApiOperation(value = "获取用户所有信息", produces = "application/json")
     @GetMapping("/getUser")
     @ResponseBody

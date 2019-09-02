@@ -26,7 +26,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 @MapperScan("com.ac.dao")
 public class SpringBootDemoApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(SpringBootDemoApplication.class, args);
     }

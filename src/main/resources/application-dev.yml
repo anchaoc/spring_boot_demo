@@ -10,7 +10,17 @@ spring:
     password: root
     url: jdbc:mysql://localhost:3306/test_dev?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=CONVERT_TO_NULL
 
-#邮件
+#热部署重启
+  devtools:
+    restart:
+      enabled: true
+
+ #静态页thymeleaf
+  thymeleaf:
+    cache=false:
+
+
+  #邮件
   mail:
     host: smtp.163.com
     username: cchaoan@163.com
@@ -32,4 +42,6 @@ threadpool:
   max-pool-size: 20
   queue-capacity: 1000
   keep-alive-seconds: 300
+
+
 
