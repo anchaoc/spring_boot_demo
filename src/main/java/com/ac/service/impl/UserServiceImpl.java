@@ -35,7 +35,6 @@ public class UserServiceImpl implements UserService {
      * @param u 用户
      */
     @Async("threadPoolTaskExecutor")
-    @Transactional(rollbackFor = Exception.class)
     @Override
     public void batchSave(User u) {
         log.warn("当前线程--> "+Thread.currentThread().getName());
