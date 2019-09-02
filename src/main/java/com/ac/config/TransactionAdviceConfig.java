@@ -1,12 +1,12 @@
 package com.ac.config;
 
-import org.aspectj.lang.annotation.Aspect;
 import org.springframework.aop.Advisor;
 import org.springframework.aop.aspectj.AspectJExpressionPointcut;
 import org.springframework.aop.support.DefaultPointcutAdvisor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.interceptor.DefaultTransactionAttribute;
@@ -17,8 +17,8 @@ import org.springframework.transaction.interceptor.TransactionInterceptor;
  *  全局事务控制
  * @author anchao
  */
-@Aspect
 @Configuration
+@Component
 public class TransactionAdviceConfig {
 
     private static final String AOP_POINTCUT_EXPRESSION = "execution(* com.ac.service.impl.*.*(..))";

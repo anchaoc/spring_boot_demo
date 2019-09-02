@@ -33,15 +33,12 @@ public class UserController {
         return userService.queryUser();
     }
 
-    @ApiOperation(value = "批量插入用户信息", produces = "application/json")
-    @GetMapping("/batchSave")
-    public void batchSave(){
-        User u;
-        for (int i = 0; i <5 ; i++) {
-            u =new User();
-            u.setName("an"+i);
-            userService.batchSave(u);
-        }
+    @ApiOperation(value = "插入用户信息", produces = "application/json")
+    @GetMapping("/save")
+    public void save(){
+            User u =new User();
+            u.setName("an");
+            userService.save(u);
     }
 
     @ApiOperation(value = "获取某个用户信息", produces = "application/json")
