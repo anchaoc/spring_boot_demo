@@ -14,4 +14,6 @@ public interface UserMapper {
     List<User> queryUser();
 
     void batchSave(User u);
+
+    User getUserInfo(Long id);
 }

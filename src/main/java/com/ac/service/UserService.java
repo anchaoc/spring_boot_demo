@@ -12,4 +12,6 @@ public interface UserService {
     List<User> queryUser();
 
     void save(User u);
+
+    User getUserInfo(Long id);
 }

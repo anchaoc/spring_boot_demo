@@ -34,16 +34,14 @@ public class UserController {
     }
 
     @ApiOperation(value = "插入用户信息", produces = "application/json")
-    @GetMapping("/save")
-    public void save(){
-            User u =new User();
-            u.setName("an");
-            userService.save(u);
+    @PostMapping("/save")
+    public void save(@RequestBody User user){
+            userService.save(user);
     }
 
     @ApiOperation(value = "获取某个用户信息", produces = "application/json")
     @GetMapping("/getUserInfo/{id}")
-    public void getUserInfo(@PathVariable("id") Long id){
-
+    public User getUserInfo(@PathVariable("id") Long id){
+        return userService.getUserInfo(id);
     }
 }

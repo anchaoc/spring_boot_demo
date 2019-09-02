@@ -40,4 +40,9 @@ public class UserServiceImpl implements UserService {
         log.warn("插入name--> "+u.getName());
         userMapper.batchSave(u);
     }
+
+    @Override
+    public User getUserInfo(Long id) {
+        return userMapper.getUserInfo(id);
+    }
 }

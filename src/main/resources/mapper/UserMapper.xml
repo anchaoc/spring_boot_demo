@@ -19,4 +19,8 @@
         INSERT INTO test_user(name) VALUES(#{name})
     </insert>
 
+
+    <select id="getUserInfo" resultType="com.ac.model.User">
+        SELECT <include refid="user_result"/> FROM test_user WHERE ID = #{id}
+    </select>
 </mapper>
