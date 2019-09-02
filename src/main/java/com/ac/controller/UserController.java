@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
+/** 用户服务
  * @author anchao
  *
  */
@@ -30,7 +30,7 @@ public class UserController {
     @GetMapping("/hi")
     @ResponseBody
     public String hi(){
-        return "hi ~!";
+        return "hi spring ~";
     }
 
     @ApiOperation(value = "获取用户所有信息", produces = "application/json")

@@ -103,7 +103,8 @@ public class MailServer {
             try {
                 FileSystemResource fileSystemResource = new FileSystemResource(new File(f));
                 String fileName = fileSystemResource.getFilename();
-                mimeMessageHelper.addAttachment(MimeUtility.encodeText(fileName, "UTF-8", "B"), fileSystemResource);
+                mimeMessageHelper.addAttachment(MimeUtility.encodeText(fileName, "UTF-8", "B"),
+                fileSystemResource);
             } catch (Exception e) {
                 e.printStackTrace();
                 throw new RuntimeException(e.getMessage());
@@ -123,7 +124,7 @@ public class MailServer {
      * @param id 附件id
      */
     public void sendImageMail(String to, String subject, String text, String src,String id)
-            throws MessagingException, UnsupportedEncodingException {
+            throws MessagingException {
 
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
 
