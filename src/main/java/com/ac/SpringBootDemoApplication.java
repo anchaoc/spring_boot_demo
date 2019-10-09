@@ -22,14 +22,14 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * @author anchao
  */
 @SpringBootApplication
-@EnableAspectJAutoProxy
-@EnableAsync
+//@EnableAspectJAutoProxy
+//@EnableAsync
 @EnableTransactionManagement
-@EnableScheduling
+//@EnableScheduling
 @EnableSwagger2
-@EnableHello
+//@EnableHello
 @MapperScan("com.ac.dao")
-@ServletComponentScan(basePackages = "com.ac.servlet3")
+//@ServletComponentScan(basePackages = "com.ac.servlet3")
 public class SpringBootDemoApplication {
     public static void main(String[] args) {
         SpringApplication.run(SpringBootDemoApplication.class, args);
