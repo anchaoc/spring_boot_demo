@@ -1,5 +1,6 @@
 package com.ac;
 
+import com.ac.enable.EnableHello;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -26,6 +27,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableTransactionManagement
 @EnableScheduling
 @EnableSwagger2
+@EnableHello
 @MapperScan("com.ac.dao")
 @ServletComponentScan(basePackages = "com.ac.servlet3")
 public class SpringBootDemoApplication {
