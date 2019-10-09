@@ -6,3 +6,6 @@
 3. java mail
 4. aop切面 & 全局事务
 5. spring定时器 scheduled
+6. springboot热部署
+7. servlet3.0+
+
