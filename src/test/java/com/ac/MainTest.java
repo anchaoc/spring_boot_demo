@@ -1,5 +1,7 @@
 package com.ac;
 
+import com.ac.utils.GsonUtil;
+
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
@@ -9,7 +11,6 @@ import java.util.concurrent.atomic.AtomicReference;
 public class MainTest {
 
     public static void main(String[] args) {
-        testAtomic();
     }
 
 
@@ -22,6 +23,5 @@ public class MainTest {
         one.compareAndSet(oneGet,2);
         System.out.println(one.get());
     }
-
 
 }
