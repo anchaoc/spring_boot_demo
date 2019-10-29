@@ -1,7 +1,9 @@
 package com.ac;
 
-import com.ac.utils.GsonUtil;
-
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
@@ -11,6 +13,7 @@ import java.util.concurrent.atomic.AtomicReference;
 public class MainTest {
 
     public static void main(String[] args) {
+        replace();
     }
 
 
@@ -24,4 +27,16 @@ public class MainTest {
         System.out.println(one.get());
     }
 
+    public static void test(){
+        List<Integer> list = Arrays.asList(1, 2, 3);
+        Optional<Integer> max = list.stream().max(Comparator.comparing(Integer::intValue));
+        max.ifPresent(t ->{
+            System.out.println(t);
+        });
+    }
+
+
+    public static void replace(){
+
+    }
 }
