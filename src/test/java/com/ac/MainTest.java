@@ -1,9 +1,9 @@
 package com.ac;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import com.google.common.collect.Lists;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
+import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
@@ -11,11 +11,6 @@ import java.util.concurrent.atomic.AtomicReference;
  * @date 2019/10/9 14:42
  */
 public class MainTest {
-
-    public static void main(String[] args) {
-        replace();
-    }
-
 
     /**
      * 并发保证原子性
@@ -27,6 +22,7 @@ public class MainTest {
         System.out.println(one.get());
     }
 
+
     public static void test(){
         List<Integer> list = Arrays.asList(1, 2, 3);
         Optional<Integer> max = list.stream().max(Comparator.comparing(Integer::intValue));
@@ -36,7 +32,12 @@ public class MainTest {
     }
 
 
-    public static void replace(){
+
+
+
+    public static void main(String[] args) {
+
 
     }
+
 }
