@@ -37,7 +37,24 @@ public class MainTest {
 
     public static void main(String[] args) {
 
+        System.out.println(testReturn());
 
+    }
+
+
+
+    private static Integer testReturn(){
+        Integer[] integerArr = {1,2,3,4,5,6,null,null,7,8};
+
+        for (Integer integer : integerArr) {
+
+            if(integer==null){
+                return 999;
+            }
+
+        }
+
+        return 1;
     }
 
 }
