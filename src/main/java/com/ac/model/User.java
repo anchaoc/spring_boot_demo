@@ -1,5 +1,6 @@
 package com.ac.model;
 
+import cn.afterturn.easypoi.excel.annotation.Excel;
 import lombok.Data;
 
 /**
@@ -8,8 +9,10 @@ import lombok.Data;
 @Data
 public class User {
 
+    @Excel(name = "ID")
     private Long id;
 
+    @Excel(name = "名称")
     private String name;
 
 
