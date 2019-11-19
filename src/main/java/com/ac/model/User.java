@@ -9,10 +9,10 @@ import lombok.Data;
 @Data
 public class User {
 
-    @Excel(name = "ID")
+    @Excel(name = "ID",orderNum = "1")
     private Long id;
 
-    @Excel(name = "名称")
+    @Excel(name = "名称",orderNum = "2",width = 20)
     private String name;
 
 

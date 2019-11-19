@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /** 用户服务
  * @author anchao
@@ -26,7 +27,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    @ApiOperation(value = "hi", produces = "application/json")
     @GetMapping("/hi")
     @ResponseBody
     public String hi(){

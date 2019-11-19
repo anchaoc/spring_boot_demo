@@ -45,20 +45,14 @@ public class EasyPoiUtil {
 
 
     /**
-     * 功能描述：复杂导出Excel，包括文件名以及表名,不创建表头
-     *
-     * @author 李家威
-     * @date 2018/7/23 13:07
-     * @param list 导出的实体类
-     * @param title 表头名称
-     * @param sheetName sheet表名
-     * @param pojoClass 映射的实体类
-     * @param fileName
-     * @param response
-     * @return
+     * 导出Excel
      */
-    public static void exportExcel(List<?> list, String title, String sheetName, Class<?> pojoClass, String fileName, HttpServletResponse response) {
-        defaultExport(list, pojoClass, fileName, response, new ExportParams(title, sheetName));
+    public static void exportExcel(List<?> list, String sheetName, Class<?> pojoClass, String fileName, HttpServletResponse response) {
+        ExportParams exportParams = new ExportParams();
+        exportParams.setSheetName(sheetName);
+        exportParams.setType(ExcelType.HSSF);
+        exportParams.setStyle(ExcelStyleUtil.class);
+        defaultExport(list, pojoClass, fileName, response,exportParams);
     }
 
     /**
