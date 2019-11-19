@@ -117,7 +117,7 @@ public class ExcelStyleUtil implements IExcelExportStyler {
         CellStyle style = getBaseCellStyle(workbook);
         style.setFont(getFont(workbook, FONT_SIZE_ELEVEN, false));
         //背景色
-        style.setFillForegroundColor(IndexedColors.YELLOW.getIndex());
+        style.setFillForegroundColor(IndexedColors.PINK.getIndex());
         style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
         return style;
     }

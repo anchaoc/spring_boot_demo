@@ -1,20 +1,10 @@
 package com.ac.dao;
 
 import com.ac.model.User;
-import org.springframework.stereotype.Repository;
-
-import java.util.List;
-import java.util.Map;
-
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 /**
  * @author anchao
  */
-@Repository
-public interface UserMapper {
+public interface UserMapper extends BaseMapper<User> {
 
-    List<User> queryUser();
-
-    void batchSave(User u);
-
-    User getUserInfo(Long id);
 }

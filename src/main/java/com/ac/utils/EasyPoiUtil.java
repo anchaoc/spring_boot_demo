@@ -26,7 +26,7 @@ public class EasyPoiUtil {
     /**
      * 功能描述：复杂导出Excel，包括文件名以及表名。创建表头
      *
-     * @author 李家威
+     * @author 
      * @date 2018/7/23 13:07
      * @param list 导出的实体类
      * @param title 表头名称
@@ -58,7 +58,7 @@ public class EasyPoiUtil {
     /**
      * 功能描述：Map 集合导出
      *
-     * @author 李家威
+     * @author 
      * @date 2018/7/23 16:14
      * @param list 实体集合
      * @param fileName 导出的文件名称
@@ -72,7 +72,7 @@ public class EasyPoiUtil {
     /**
      * 功能描述：默认导出方法
      *
-     * @author 李家威
+     * @author 
      * @date 2018/7/23 15:33
      * @param list 导出的实体集合
      * @param fileName 导出的文件名
@@ -91,7 +91,7 @@ public class EasyPoiUtil {
     /**
      * 功能描述：Excel导出
      *
-     * @author 李家威
+     * @author 
      * @date 2018/7/23 15:35
      * @param fileName 文件名称
      * @param response
@@ -112,7 +112,7 @@ public class EasyPoiUtil {
     /**
      * 功能描述：默认导出方法
      *
-     * @author 李家威
+     * @author 
      * @date 2018/7/23 15:33
      * @param list 导出的实体集合
      * @param fileName 导出的文件名
@@ -129,7 +129,7 @@ public class EasyPoiUtil {
     /**
      * 功能描述：根据文件路径来导入Excel
      *
-     * @author 李家威
+     * @author 
      * @date 2018/7/23 14:17
      * @param filePath 文件路径
      * @param titleRows 表标题的行数
@@ -160,7 +160,7 @@ public class EasyPoiUtil {
     /**
      * 功能描述：根据接收的Excel文件来导入Excel,并封装成实体类
      *
-     * @author 李家威
+     * @author 
      * @date 2018/7/23 14:17
      * @param file 上传的文件
      * @param titleRows 表标题的行数

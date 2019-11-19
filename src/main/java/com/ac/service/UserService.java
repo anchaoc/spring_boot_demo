@@ -1,18 +1,12 @@
 package com.ac.service;
 
 import com.ac.model.User;
+import com.baomidou.mybatisplus.extension.service.IService;
 
-import java.util.List;
-import java.util.Map;
 
 /**
  * @author anchao
  */
-public interface UserService {
+public interface UserService extends IService<User> {
 
-    List<User> queryUser();
-
-    void save(User u);
-
-    User getUserInfo(Long id);
 }

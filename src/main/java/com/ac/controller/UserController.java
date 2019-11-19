@@ -20,12 +20,11 @@ import java.util.Map;
 @RequestMapping("/user")
 public class UserController {
 
-    private UserService userService;
+
 
     @Autowired
-    public void setUserService(UserService userService) {
-        this.userService = userService;
-    }
+    private UserService userService;
+
 
     @GetMapping("/hi")
     @ResponseBody
@@ -37,7 +36,7 @@ public class UserController {
     @GetMapping("/getUser")
     @ResponseBody
     public List<User> getUser(){
-        return userService.queryUser();
+        return userService.list();
     }
 
     @ApiOperation(value = "插入用户信息", produces = "application/json")
@@ -50,6 +49,6 @@ public class UserController {
     @GetMapping("/getUserInfo/{id}")
     @ResponseBody
     public User getUserInfo(@PathVariable("id") Long id){
-        return userService.getUserInfo(id);
+        return userService.getById(id);
     }
 }

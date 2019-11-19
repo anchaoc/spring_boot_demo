@@ -1,18 +1,23 @@
 package com.ac.model;
 
 import cn.afterturn.easypoi.excel.annotation.Excel;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
+
+import java.io.Serializable;
 
 /**
  * @author anchao
  */
 @Data
-public class User {
+@TableName("test_user")
+public class User implements Serializable {
 
-    @Excel(name = "ID",orderNum = "1")
+    @TableId(value = "id",type = IdType.AUTO)
     private Long id;
 
-    @Excel(name = "名称",orderNum = "2",width = 20)
     private String name;
 
 

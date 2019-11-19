@@ -23,8 +23,8 @@ public class EasyPoiController {
 
     @GetMapping("/e")
     public void test1(HttpServletResponse response){
-        List<User> users = userService.queryUser();
-        EasyPoiUtil.exportExcel(users,"sheet_test", User.class,"用户信息.xls",response);
+        List<User> list = userService.list();
+        EasyPoiUtil.exportExcel(list,"sheet_test", User.class,"用户信息.xls",response);
     }
 
 }
