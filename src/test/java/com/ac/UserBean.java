@@ -8,9 +8,13 @@ import lombok.Data;
  * @date 2019/11/3 20:26
  */
 @Data
-@Builder
 public class UserBean {
     private Long id;
     private String name;
+    private boolean flag;
 
+    public UserBean(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }
