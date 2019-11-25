@@ -1,8 +1,13 @@
 package com.ac;
 
+import com.ac.utils.GsonUtil;
 import com.google.common.collect.Lists;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
@@ -14,13 +19,32 @@ import java.util.stream.Collectors;
 public class MainTest {
 
     public static void main(String[] args) {
-        test4();
-
+        test7();
     }
 
 
-
     /**
+     * 实体 集合 参数值 比对
+     */
+    private static void test7(){
+        UserBean userBean = new UserBean(1L, "anchao");
+        UserBean userBean2 = new UserBean(1L, "anchao");
+        userBean.setUserBeans(Arrays.asList(userBean));
+        userBean2.setUserBeans(Arrays.asList(userBean2));
+        System.out.println("实体比对"+userBean.equals(userBean2));
+        System.out.println("集合比对"+Arrays.equals(userBean.getUserBeans().toArray(),userBean2.getUserBeans().toArray()));
+    }
+
+
+    private static void test6(){
+        //localDate 转 date
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant());
+        System.out.println(simpleDateFormat.format(date));
+    }
+
+
+   /**
      * 并发保证原子性
      */
     private static void testAtomic(){
