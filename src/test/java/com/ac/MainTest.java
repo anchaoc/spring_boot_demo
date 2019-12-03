@@ -4,6 +4,7 @@ import com.ac.utils.GsonUtil;
 import com.google.common.collect.Lists;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -19,7 +20,6 @@ import java.util.stream.Collectors;
 public class MainTest {
 
     public static void main(String[] args) {
-        test7();
     }
 
 
