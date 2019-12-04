@@ -20,8 +20,12 @@ import java.util.stream.Collectors;
 public class MainTest {
 
     public static void main(String[] args) {
+        test8();
     }
 
+
+    private static void test8(){
+    }
 
     /**
      * 实体 集合 参数值 比对

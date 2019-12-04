@@ -5,6 +5,7 @@ import com.ac.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -51,4 +52,13 @@ public class UserController {
     public User getUserInfo(@PathVariable("id") Long id){
         return userService.getById(id);
     }
+
+
+    @PostMapping(value = "/in",headers = MediaType.ALL_VALUE)
+    @ResponseBody
+    public String in(@RequestBody User user){
+        System.out.println(user);
+        return "hi spring ~";
+    }
+
 }
