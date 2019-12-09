@@ -24,8 +24,19 @@ public class MainTest {
     }
 
 
+    /**
+     * 解决KEY相同时问题
+     */
     private static void test8(){
+        UserBean userBean = new UserBean(1L, "anchao");
+        UserBean userBean2 = new UserBean(4L, "haha");
+        UserBean userBean3 = new UserBean(2L, "hehe");
+        UserBean userBean4 = new UserBean(1L, "weihongda");
+        ArrayList<UserBean> userBeanArrayList = Lists.newArrayList(userBean, userBean2, userBean3, userBean4);
+        Map<Long, UserBean> collect = userBeanArrayList.stream().collect(Collectors.toMap(UserBean::getId,u -> u,(v1,v2) ->v2));
+        System.out.println(collect);
     }
+
 
     /**
      * 实体 集合 参数值 比对
