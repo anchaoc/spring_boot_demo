@@ -1,7 +1,9 @@
 package com.ac;
 
+import com.ac.functionalinterface.LogFuncationalInterface;
 import com.ac.utils.GsonUtil;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.math.BigDecimal;
@@ -20,9 +22,14 @@ import java.util.stream.Collectors;
 public class MainTest {
 
     public static void main(String[] args) {
-        test8();
+
     }
 
+
+
+    private static void test9(){
+
+    }
 
     /**
      * 解决KEY相同时问题
@@ -33,7 +40,7 @@ public class MainTest {
         UserBean userBean3 = new UserBean(2L, "hehe");
         UserBean userBean4 = new UserBean(1L, "weihongda");
         ArrayList<UserBean> userBeanArrayList = Lists.newArrayList(userBean, userBean2, userBean3, userBean4);
-        Map<Long, UserBean> collect = userBeanArrayList.stream().collect(Collectors.toMap(UserBean::getId,u -> u,(v1,v2) ->v2));
+        Map<Long, UserBean> collect = userBeanArrayList.stream().collect(Collectors.toMap(UserBean::getId,u -> u,(v1,v2) ->v1, Maps::newConcurrentMap));
         System.out.println(collect);
     }
 
