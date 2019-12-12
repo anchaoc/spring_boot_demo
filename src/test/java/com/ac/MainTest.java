@@ -40,7 +40,9 @@ public class MainTest {
         UserBean userBean3 = new UserBean(2L, "hehe");
         UserBean userBean4 = new UserBean(1L, "weihongda");
         ArrayList<UserBean> userBeanArrayList = Lists.newArrayList(userBean, userBean2, userBean3, userBean4);
-        Map<Long, UserBean> collect = userBeanArrayList.stream().collect(Collectors.toMap(UserBean::getId,u -> u,(v1,v2) ->v1, Maps::newConcurrentMap));
+        Map<Long, UserBean> collect = userBeanArrayList.stream().collect(Collectors.toMap(UserBean::getId
+                ,u -> u,(v1,v2) ->v1
+                , Maps::newConcurrentMap));
         System.out.println(collect);
     }
 
@@ -109,20 +111,5 @@ public class MainTest {
         System.out.println(userBean);
     }
 
-
-
-
-    private static Integer testReturn(){
-        Integer[] integerArr = {1,2,3,4,5,6,null,null,7,8};
-
-        for (Integer integer : integerArr) {
-
-            if(integer==null){
-                return 999;
-            }
-        }
-
-        return 1;
-    }
 
 }
