@@ -1,6 +1,8 @@
 # 服务端口
 server:
   port: 8081
+  servlet:
+    context-path: /demo/api
 
 #数据源 mysql 8.0.16
 spring:
