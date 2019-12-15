@@ -4,6 +4,8 @@ import com.ac.functionalinterface.LogFuncationalInterface;
 import com.ac.utils.GsonUtil;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import org.apache.commons.codec.cli.Digest;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.math.BigDecimal;
@@ -22,12 +24,18 @@ import java.util.stream.Collectors;
 public class MainTest {
 
     public static void main(String[] args) {
-
+        test9();
     }
 
 
 
     private static void test9(){
+
+        String str ="1";
+        String stra = new String("1");
+        System.out.println(str == stra);
+        String s = DigestUtils.md5Hex(str);
+        System.out.println(s);
 
     }
 

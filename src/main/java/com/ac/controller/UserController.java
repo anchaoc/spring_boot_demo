@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 /** 用户服务
  * @author anchao
@@ -33,9 +32,9 @@ public class UserController {
         return "hi spring ~";
     }
 
-    @ApiOperation(value = "获取用户所有信息", produces = "application/json")
+    @ApiOperation(value = "获取用户所有信息", produces = MediaType.APPLICATION_XML_VALUE)
     @GetMapping("/getUser")
-    @ResponseBody
+    //@ResponseBody
     public List<User> getUser(){
         return userService.list();
     }

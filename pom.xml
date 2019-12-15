@@ -111,6 +111,12 @@
             <version>1.5.22</version>
         </dependency>
 
+        <!--quartz-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-quartz</artifactId>
+        </dependency>
+
         <!--easypoi-->
         <dependency>
             <groupId>cn.afterturn</groupId>
