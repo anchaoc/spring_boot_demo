@@ -32,9 +32,9 @@ public class UserController {
         return "hi spring ~";
     }
 
-    @ApiOperation(value = "获取用户所有信息", produces = MediaType.APPLICATION_XML_VALUE)
+    @ApiOperation(value = "获取用户所有信息")
     @GetMapping("/getUser")
-    //@ResponseBody
+    @ResponseBody
     public List<User> getUser(){
         return userService.list();
     }

@@ -1,26 +1,26 @@
 package com.ac;
 
 
-import com.ac.model.User;
-import com.ac.service.UserService;
-import com.ac.utils.EasyPoiUtil;
+import com.ac.client.GoogleTranslateApi;
+import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.web.context.request.RequestAttributes;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.List;
+import javax.annotation.Resource;
 
 /**
  * @author anchao
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = WebApplication.class)
 public class SpringBootDemoTest {
 
+    @Resource
+    GoogleTranslateApi googleTranslateApi;
 
+    @Test
+    public void test(){
+        googleTranslateApi.getranslate();
+    }
 }
