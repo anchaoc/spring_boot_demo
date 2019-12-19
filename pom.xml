@@ -7,7 +7,6 @@
         <module>demo_common</module>
         <module>demo_web</module>
         <module>demo_core</module>
-        <module>demo_client</module>
     </modules>
 
     <parent>
