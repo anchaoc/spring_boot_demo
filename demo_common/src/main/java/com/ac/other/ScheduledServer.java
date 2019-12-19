@@ -1,10 +1,7 @@
-package com.ac.otherserver;
+package com.ac.other;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-
-import java.time.LocalDateTime;
 
 /**
  *  定时任务

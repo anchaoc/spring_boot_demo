@@ -1,10 +1,11 @@
-package com.ac.utils;
+package com.ac.common.utils;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.cglib.beans.BeanMap;
 import org.springframework.util.CollectionUtils;
+
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;

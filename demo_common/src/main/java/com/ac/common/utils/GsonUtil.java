@@ -1,5 +1,5 @@
 
-package com.ac.utils;
+package com.ac.common.utils;
 
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
