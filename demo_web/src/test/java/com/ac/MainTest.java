@@ -23,7 +23,6 @@ public class MainTest {
 
 
     private static void test9(){
-
     }
 
     /**

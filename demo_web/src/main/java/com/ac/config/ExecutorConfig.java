@@ -2,10 +2,13 @@ package com.ac.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+import org.springframework.util.unit.DataSize;
 
+import javax.servlet.MultipartConfigElement;
 import java.util.concurrent.Executor;
 
 /**
@@ -43,5 +46,19 @@ public class ExecutorConfig {
         executor.initialize();
         log.info("threadPoolTaskExecutor 初始化完成-->"+corePoolSize);
         return executor;
+    }
+
+
+    /**
+     * 配置上传文件大小的配置
+     */
+    @Bean
+    public MultipartConfigElement multipartConfigElement() {
+        MultipartConfigFactory factory = new MultipartConfigFactory();
+        //  单个数据大小
+        factory.setMaxFileSize(DataSize.ofMegabytes(50));
+        /// 总上传数据大小
+        factory.setMaxRequestSize(DataSize.ofMegabytes(50));
+        return factory.createMultipartConfig();
     }
 }
