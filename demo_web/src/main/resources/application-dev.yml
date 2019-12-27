@@ -49,12 +49,12 @@ mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
-#线程池
+#线程池配置
 threadpool:
-  core-pool-size: 10
-  max-pool-size: 20
-  queue-capacity: 1000
-  keep-alive-seconds: 300
+  core-pool-size: 10 #线程池维护线程的最少数量 空闲时仍保留在池中的线程数
+  max-pool-size: 20 #线程池维护线程的最大数量
+  queue-capacity: 1000 # 缓存队列
+  keep-alive-seconds: 300 #允许的空闲时间
 
 
 
