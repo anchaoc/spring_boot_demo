@@ -15,6 +15,7 @@ import java.time.format.DateTimeFormatter;
 public class DateUtil {
 
     public static final String DATE_FOLDER = "yyyy/MM/dd";
+    public static final String YYYYMMDDHHMMSSS = "yyyyMMddHHmmSSS";
 
 
     /**

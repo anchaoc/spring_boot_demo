@@ -1,5 +1,6 @@
 package com.ac.controller;
 
+import com.ac.common.utils.GuavaStringUtils;
 import com.ac.service.UplodaFileService;
 import com.ac.webutil.DateUtil;
 import io.swagger.annotations.Api;
@@ -17,7 +18,8 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import java.io.File;
 import java.io.IOException;
-import java.util.UUID;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * @author anchao
@@ -40,12 +42,19 @@ public class FileController {
     public String uploadFile(@ApiParam("file")MultipartFile file){
         try {
             String dateFolder = DateUtil.getDateFolder();
-            File fileNew = new File(dateFolder, UUID.randomUUID().toString());
+
+            String fileName = GuavaStringUtils.JOINER.join(LocalDateTime.now().format(DateTimeFormatter.ofPattern(DateUtil.YYYYMMDDHHMMSSS)), file.getOriginalFilename());
+
+            File fileNew = new File(dateFolder, fileName);
+
             if(!fileNew.getParentFile().exists()){
                 fileNew.getParentFile().mkdirs();
             }
+
             FileUtils.copyInputStreamToFile(file.getInputStream(),fileNew);
+
             return fileNew.getPath();
+
         } catch (IOException e) {
             log.error("FileController.uploadFile.error={}",e.toString());
         }
