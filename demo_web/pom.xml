@@ -47,6 +47,13 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
+        <!--QUARTZ-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-quartz</artifactId>
+        </dependency>
+
+
         <!--swagger-->
         <dependency>
             <groupId>io.springfox</groupId>

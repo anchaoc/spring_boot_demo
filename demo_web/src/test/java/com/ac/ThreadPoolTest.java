@@ -1,6 +1,5 @@
 package com.ac;
 
-
 import lombok.extern.slf4j.Slf4j;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -8,12 +7,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * @author anchao
+ * @date 2019/12/29 16:22
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = WebApplication.class)
 @Slf4j
-public class SpringBootDemoTest {
-//
+public class ThreadPoolTest {
+    //
 //    @Resource
 //    ThreadPoolTaskExecutor threadPoolTaskExecutor;
 //
@@ -43,6 +43,5 @@ public class SpringBootDemoTest {
 //        log.info("SpringBootDemoTest,testAsync,threadName={}", Thread.currentThread().getName());
 //
 //    }
-
-
+//
 }

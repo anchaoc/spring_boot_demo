@@ -2,7 +2,9 @@ package com.ac;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import org.springframework.core.io.ClassPathResource;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -21,9 +23,21 @@ public class MainTest {
     }
 
 
-
+    /**
+     * 读取自定义配置文件
+     */
     private static void test9(){
+        ClassPathResource classPathResource = new ClassPathResource("org/quartz/quartz.properties");
+        System.out.println(classPathResource);
+        Properties properties = new Properties();
+        try {
+            properties.load(classPathResource.getInputStream());
+            System.out.println(properties);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 
     /**
      * 解决KEY相同时问题

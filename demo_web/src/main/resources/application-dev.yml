@@ -12,6 +12,33 @@ spring:
     password: root
     url: jdbc:mysql://localhost:3306/test_dev?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=CONVERT_TO_NULL
 
+#quartz相关属性配置
+  quartz:
+    properties:
+      org:
+        quartz:
+          scheduler:
+            instanceName: clusteredScheduler #调度标识名
+            instanceId: AUTO #ID设置为自动获取
+            skipUpdateCheck: true #禁用quartz软件更新
+          jobStore:
+            class: org.quartz.impl.jdbcjobstore.JobStoreTX #数据保存方式为数据库持久化
+            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate #数据库代理类，一般StdJDBCDelegate可以满足大部分数据库
+            tablePrefix: QRTZ_ #表前缀(sql文件位置：org\quartz-scheduler\quartz\2.3.1\quartz-2.3.1.jar!\org\quartz\impl\jdbcjobstore\tables_db2_v72.sql)
+            isClustered: true  #是否加入集群
+            clusterCheckinInterval: 10000 #调度实例失效的检查时间间隔
+            useProperties: true #是否使用当前配置
+          threadPool:
+            class: org.quartz.simpl.SimpleThreadPool #线程池
+            threadCount: 10 # 线程数，至少为1（无默认值）(一般设置为1-100之间的整数合适)
+            threadPriority: 5 #设置线程的优先级（最大为Thread.MAX_PRIORITY 10，最小为Thread.MIN_PRIORITY 1，默认为5）
+            threadsInheritContextClassLoaderOfInitializingThread: true  #设置守护线程  默认为true
+    job-store-type: jdbc  #数据库方式
+
+
+
+
+
 #热部署重启
   devtools:
     restart:
