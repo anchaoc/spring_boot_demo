@@ -3,11 +3,11 @@ package com.ac.controller;
 import com.ac.model.User;
 import com.ac.service.UserService;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -26,38 +26,52 @@ public class UserController {
     private UserService userService;
 
 
-    @GetMapping("/hi")
+    @GetMapping("/getAll")
     @ResponseBody
-    public String hi(){
-        return "hi spring ~";
-    }
-
-    @ApiOperation(value = "获取用户所有信息")
-    @GetMapping("/getUser")
-    @ResponseBody
-    public List<User> getUser(){
-        return userService.list();
-    }
-
-    @ApiOperation(value = "插入用户信息", produces = "application/json")
-    @PostMapping("/save")
-    public void save(@RequestBody User user){
-            userService.save(user);
-    }
-
-    @ApiOperation(value = "获取某个用户信息", produces = "application/json")
-    @GetMapping("/getUserInfo/{id}")
-    @ResponseBody
-    public User getUserInfo(@PathVariable("id") Long id){
-        return userService.getById(id);
+    public List<User> getAll(){
+        return  userService.getAll();
     }
 
 
-    @PostMapping(value = "/in",headers = MediaType.ALL_VALUE)
-    @ResponseBody
-    public String in(@RequestBody User user){
-        System.out.println(user);
-        return "hi spring ~";
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    @ApiOperation(value = "获取用户所有信息")
+//    @GetMapping("/getUser")
+//    @ResponseBody
+//    public List<User> getUser(){
+//        return userService.list();
+//    }
+//
+//    @ApiOperation(value = "插入用户信息", produces = "application/json")
+//    @PostMapping("/save")
+//    public void save(@RequestBody User user){
+//            userService.save(user);
+//    }
+//
+//    @ApiOperation(value = "获取某个用户信息", produces = "application/json")
+//    @GetMapping("/getUserInfo/{id}")
+//    @ResponseBody
+//    public User getUserInfo(@PathVariable("id") Long id){
+//        return userService.getById(id);
+//    }
+//
+//
+//    @PostMapping(value = "/in",headers = MediaType.ALL_VALUE)
+//    @ResponseBody
+//    public String in(@RequestBody User user){
+//        System.out.println(user);
+//        return "hi spring ~";
+//    }
 
 }
