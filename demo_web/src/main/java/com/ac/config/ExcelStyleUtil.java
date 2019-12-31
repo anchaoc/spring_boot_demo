@@ -105,6 +105,7 @@ public class ExcelStyleUtil implements IExcelExportStyler {
     private CellStyle initHeaderStyle(Workbook workbook) {
         CellStyle style = getBaseCellStyle(workbook);
         style.setFont(getFont(workbook, FONT_SIZE_TWELVE, true));
+        style.setWrapText(true);//设置换行
         return style;
     }
 

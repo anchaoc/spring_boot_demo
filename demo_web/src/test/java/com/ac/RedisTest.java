@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.support.atomic.RedisAtomicLong;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
@@ -27,6 +28,9 @@ public class RedisTest {
 
     @Test
     public void testRedis(){
-        log.info("------------>userInfo={}",userService.getAll());
+        //log.info("------------>userInfo={}",userService.getAll());
+        RedisAtomicLong test = new RedisAtomicLong("test", redisTemplate.getConnectionFactory());
+        long andIncrement = test.getAndIncrement();
+        System.out.println(andIncrement);
     }
 }
