@@ -56,7 +56,7 @@ public class FileController {
             return fileNew.getPath();
 
         } catch (IOException e) {
-            log.error("FileController.uploadFile.error={}",e.toString());
+            log.error("FileController.uploadFile.error",e);
         }
         return StringUtils.EMPTY;
     }

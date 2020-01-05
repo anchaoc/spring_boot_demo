@@ -61,11 +61,11 @@ spring:
 
 
 # REDIS配置
-  redis:
-    database: 0
-    host: 127.0.0.1
-    port: 6379
-    timeout: 3000
+#  redis:
+#    database: 0
+#    host: 127.0.0.1
+#    port: 6379
+#    timeout: 3000
 
 
 #持久层 mybatis-springboot

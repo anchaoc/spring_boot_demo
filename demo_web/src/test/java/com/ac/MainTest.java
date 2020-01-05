@@ -2,9 +2,10 @@ package com.ac;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ClassPathResource;
 
-import java.io.IOException;
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -16,19 +17,13 @@ import java.util.stream.Collectors;
  * @author anchao
  * @date 2019/10/9 14:42
  */
+@Slf4j
 public class MainTest {
 
     public static void main(String[] args) {
-        test10();
+        test11();
     }
 
-
-
-
-
-    private static void test10(){
-
-    }
 
 
 
@@ -38,17 +33,83 @@ public class MainTest {
 
 
     /**
+     * 按字符读取文件
+     */
+    private static void test11(){
+        File file = new File("D:/tt.txt");
+        File file2 = new File("D:/TEST_FILE/tt3.txt");
+        if(!file.exists()){
+            file.mkdir();
+        }
+
+        try {
+            FileReader fileReader = new FileReader(file);
+            FileWriter fileWriter = new FileWriter(file2);
+            BufferedReader bufferedReader= new BufferedReader(fileReader);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+            String a ;
+            while((a=bufferedReader.readLine())!=null){
+                bufferedWriter.write(a);
+            }
+            bufferedReader.close();
+            bufferedWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 原生读写文件
+     */
+    private static void test10(){
+
+        BufferedInputStream bufferedInputStream =null;
+        BufferedOutputStream bufferedOutputStream = null;
+
+        File file = new File("D:/tt.txt");
+        File file2 = new File("D:/TEST_FILE/tt3.txt");
+        if(!file.exists()){
+            file.mkdir();
+        }
+        try {
+
+             bufferedInputStream = new BufferedInputStream(new FileInputStream(file));
+             bufferedOutputStream = new BufferedOutputStream(new FileOutputStream(file2));
+
+            int a;
+            byte[] bytes = new byte[100*1024];
+
+            while((a =bufferedInputStream.read(bytes,0,bytes.length)) !=-1){
+                bufferedOutputStream.write(bytes,0,a);
+            }
+
+            bufferedInputStream.close();
+            bufferedOutputStream.close();
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+        }
+
+    }
+
+
+    /**
      * 读取自定义配置文件
      */
     private static void test9(){
-        ClassPathResource classPathResource = new ClassPathResource("org/quartz/quartz.properties");
-        System.out.println(classPathResource);
+        ClassPathResource classPathResource = new ClassPathResource("proper.properties");
+        log.warn("读取自定义配置文件,classPathResource={}",classPathResource);
         Properties properties = new Properties();
         try {
             properties.load(classPathResource.getInputStream());
-            System.out.println(properties);
+            log.warn("读取自定义配置文件,properties={}",properties);
+            String key = properties.getProperty("key");
+            log.warn("读取自定义配置文件,key={}",key);
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("",e);
         }
     }
 
@@ -82,6 +143,9 @@ public class MainTest {
     }
 
 
+    /**
+     * localDate 转 date
+     */
     private static void test6(){
         //localDate 转 date
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
