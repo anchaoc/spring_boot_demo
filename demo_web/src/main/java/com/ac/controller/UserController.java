@@ -3,6 +3,7 @@ package com.ac.controller;
 import com.ac.model.User;
 import com.ac.service.UserService;
 import io.swagger.annotations.Api;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ import java.util.List;
  *
  */
 @Api(value = "用户服务",tags = "用户服务")
+@Slf4j
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -34,7 +36,11 @@ public class UserController {
 
 
 
-
+    @GetMapping("/click")
+    public String click(){
+        log.info("UserController.click.页面跳转......");
+        return "/one";
+    }
 
 
 

@@ -16,4 +16,18 @@ public class RestTemplateConfig {
 
         return new RestTemplate();
     }
+
+
+//    /**
+//     * thymeself
+//     */
+//    @Bean
+//    public ITemplateResolver templateResolver(ServletContext servletContext) {
+//        ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(servletContext);
+//        templateResolver.setPrefix("/page/");
+//        templateResolver.setSuffix(".html");
+//        templateResolver.setTemplateMode("HTML");
+//        return templateResolver;
+//    }
+
 }
