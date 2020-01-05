@@ -15,7 +15,7 @@ import java.util.List;
  * @author anchao
  *
  */
-@Api("用户服务")
+@Api(value = "用户服务",tags = "用户服务")
 @Controller
 @RequestMapping("/user")
 public class UserController {

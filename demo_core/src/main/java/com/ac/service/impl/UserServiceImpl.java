@@ -5,7 +5,6 @@ import com.ac.model.User;
 import com.ac.service.UserService;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -22,7 +21,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper,User> implements Use
     private UserMapper userMapper;
 
     @Override
-    @Cacheable(cacheNames = "user_info",unless = "#result.isEmpty() || result==null")
+    //@Cacheable(cacheNames = "user_info",unless = "#result.isEmpty() || result==null")
     public List<User> getAll() {
         return userMapper.selectList(Wrappers.query());
     }
