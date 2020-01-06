@@ -31,26 +31,23 @@ public class MainTest {
     }
 
 
-
-
-
     /**
      * 按字符读取文件
      */
-    private static void test11(){
+    private static void test11() {
         File file = new File("D:/tt.txt");
         File file2 = new File("D:/TEST_FILE/tt3.txt");
-        if(!file2.exists()){
+        if (!file2.exists()) {
             file2.mkdir();
         }
 
         try {
             InputStreamReader fileReader = new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8);
-            OutputStreamWriter  fileWriter =  new OutputStreamWriter(new FileOutputStream(file2),StandardCharsets.UTF_8);
-            BufferedReader bufferedReader= new BufferedReader(fileReader);
+            OutputStreamWriter fileWriter = new OutputStreamWriter(new FileOutputStream(file2), StandardCharsets.UTF_8);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            String a ;
-            while((a=bufferedReader.readLine())!=null){
+            String a;
+            while ((a = bufferedReader.readLine()) != null) {
                 bufferedWriter.write(a);
             }
             bufferedReader.close();
