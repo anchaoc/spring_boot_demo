@@ -1,11 +1,11 @@
 package com.ac;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ClassPathResource;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -21,12 +21,14 @@ import java.util.stream.Collectors;
 public class MainTest {
 
     public static void main(String[] args) {
-        test11();
+        test8();
     }
 
 
 
+    private static void test12(){
 
+    }
 
 
 
@@ -38,16 +40,15 @@ public class MainTest {
     private static void test11(){
         File file = new File("D:/tt.txt");
         File file2 = new File("D:/TEST_FILE/tt3.txt");
-        if(!file.exists()){
-            file.mkdir();
+        if(!file2.exists()){
+            file2.mkdir();
         }
 
         try {
-            FileReader fileReader = new FileReader(file);
-            FileWriter fileWriter = new FileWriter(file2);
+            InputStreamReader fileReader = new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8);
+            OutputStreamWriter  fileWriter =  new OutputStreamWriter(new FileOutputStream(file2),StandardCharsets.UTF_8);
             BufferedReader bufferedReader= new BufferedReader(fileReader);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-
             String a ;
             while((a=bufferedReader.readLine())!=null){
                 bufferedWriter.write(a);
@@ -68,14 +69,15 @@ public class MainTest {
         BufferedOutputStream bufferedOutputStream = null;
 
         File file = new File("D:/tt.txt");
-        File file2 = new File("D:/TEST_FILE/tt3.txt");
-        if(!file.exists()){
-            file.mkdir();
+        File file2 = new File("D:\\TEST_FILE\\");
+        if(!file2.exists()){
+            file2.mkdir();
         }
         try {
 
              bufferedInputStream = new BufferedInputStream(new FileInputStream(file));
-             bufferedOutputStream = new BufferedOutputStream(new FileOutputStream(file2));
+            String fil = file2.getPath()+"t1.txt";
+             bufferedOutputStream = new BufferedOutputStream(new FileOutputStream(fil));
 
             int a;
             byte[] bytes = new byte[100*1024];
@@ -122,10 +124,11 @@ public class MainTest {
         UserBean userBean2 = new UserBean(4L, "haha");
         UserBean userBean3 = new UserBean(2L, "hehe");
         UserBean userBean4 = new UserBean(1L, "weihongda");
-        ArrayList<UserBean> userBeanArrayList = Lists.newArrayList(userBean, userBean2, userBean3, userBean4);
-        Map<Long, UserBean> collect = userBeanArrayList.stream().collect(Collectors.toMap(UserBean::getId
-                ,u -> u,(v1,v2) ->v1
-                , Maps::newConcurrentMap));
+        UserBean userBean5 = new UserBean(1L, "anchao");
+        ArrayList<UserBean> userBeanArrayList = Lists.newArrayList(userBean, userBean2, userBean3, userBean4,userBean5);
+        Map<Long, String> collect = userBeanArrayList.stream().collect(Collectors.toMap(UserBean::getId
+                ,u -> u.getName(),(v1,v2) -> v1+","+v2
+                ));
         System.out.println(collect);
     }
 
