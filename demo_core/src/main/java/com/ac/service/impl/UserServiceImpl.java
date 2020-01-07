@@ -21,7 +21,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper,User> implements Use
     private UserMapper userMapper;
 
     @Override
-    //@Cacheable(cacheNames = "user_info",unless = "#result.isEmpty() || result==null")
     public List<User> getAll() {
         return userMapper.selectList(Wrappers.query());
     }
@@ -34,7 +33,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper,User> implements Use
 
 
 
-
+//@Cacheable(cacheNames = "user_info",unless = "#result.isEmpty() || result==null")
 //    @Cacheable(cacheNames = "user_info",
 //            key = "'user_info_' + #employeeId",
 //            condition = "#employeeId != null and #employeeId != ''",
