@@ -1,10 +1,12 @@
 package com.ac.controller;
 
+import com.ac.model.ListUserDTO;
 import com.ac.model.User;
 import com.ac.service.UserService;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,10 +30,11 @@ public class UserController {
     private UserService userService;
 
 
-    @GetMapping("/getAll")
+    @GetMapping(value = "/getAll",produces = MediaType.APPLICATION_XML_VALUE )
     @ResponseBody
-    public List<User> getAll(){
-        return  userService.getAll();
+    public ListUserDTO getAll(){
+        List<User> list= userService.getAll();
+        return  new ListUserDTO(list);
     }
 
 
