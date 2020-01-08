@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ClassPathResource;
 
 import java.io.*;
+import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -21,17 +22,14 @@ import java.util.stream.Collectors;
 public class MainTest {
 
     public static void main(String[] args) {
-
+        BigDecimal one = BigDecimal.ONE;
+        System.out.println(test12(one));
     }
 
-
-
-
-
-
-
-
-
+    private static BigDecimal test12(BigDecimal one) {
+        one = one.add(BigDecimal.ONE);
+        return one;
+    }
 
 
     /**

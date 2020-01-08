@@ -1,10 +1,13 @@
 package com.ac;
 
+import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.support.atomic.RedisAtomicLong;
 import redis.clients.jedis.Jedis;
+
+import java.util.HashMap;
 
 /**
  * @author anchao
@@ -21,11 +24,16 @@ public class RedisTest {
 
 
     public static void main(String[] args) {
-        testRedis();
+        test1();
     }
 
 
-    private static void testRedis(){
+    private static void test2(){
+        //System.out.println(jedis.set("string-key","1"));
+        //System.out.println(jedis.lpush("list-key", new String[]{"1","2"}));
+        //System.out.println(jedis.hset("hash-key","set-fieid","1"));
+        // System.out.println(jedis.zadd("zset-key",1,"1"));
+        //System.out.println(jedis.sadd("set-key", new String[]{"1","2"}));
         RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration("127.0.0.1",6379);
         JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory(redisStandaloneConfiguration);
         RedisAtomicLong test = new RedisAtomicLong("test",jedisConnectionFactory);
@@ -44,7 +52,14 @@ public class RedisTest {
     private static void test1(){
         Jedis jedis = new Jedis("127.0.0.1",6379);
         try {
+            HashMap<String, String> map = Maps.newHashMap();
+            map.put("key5",Math.incrementExact(1L)+"" );
+            String hmset = jedis.hmset("hash-key", map);
+            System.out.println(hmset);
+
+
         }finally {
+            System.out.println("jedis close");
             jedis.close();
         }
     }
