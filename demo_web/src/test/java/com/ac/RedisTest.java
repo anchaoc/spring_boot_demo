@@ -1,36 +1,51 @@
 package com.ac;
 
-import com.ac.service.UserService;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
+import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.support.atomic.RedisAtomicLong;
-import org.springframework.test.context.junit4.SpringRunner;
-
-import javax.annotation.Resource;
+import redis.clients.jedis.Jedis;
 
 /**
  * @author anchao
  * @date 2019/12/30 11:56
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = WebApplication.class)
 @Slf4j
 public class RedisTest {
 
-    @Resource
-    private RedisTemplate<String,Object> redisTemplate;
+//    @Resource
+    //private RedisTemplate<String,Object> redisTemplate;
+//
+//    @Resource
+//    private UserService userService;
 
-    @Resource
-    private UserService userService;
 
-    @Test
-    public void testRedis(){
-        //log.info("------------>userInfo={}",userService.getAll());
-        RedisAtomicLong test = new RedisAtomicLong("test", redisTemplate.getConnectionFactory());
+    public static void main(String[] args) {
+        testRedis();
+    }
+
+
+    private static void testRedis(){
+        RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration("127.0.0.1",6379);
+        JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory(redisStandaloneConfiguration);
+        RedisAtomicLong test = new RedisAtomicLong("test",jedisConnectionFactory);
         long andIncrement = test.getAndIncrement();
         System.out.println(andIncrement);
+    }
+
+
+
+
+
+
+    /**
+     * jedis
+     */
+    private static void test1(){
+        Jedis jedis = new Jedis("127.0.0.1",6379);
+        try {
+        }finally {
+            jedis.close();
+        }
     }
 }
