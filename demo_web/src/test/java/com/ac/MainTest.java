@@ -3,6 +3,7 @@ package com.ac;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ClassPathResource;
+import redis.clients.jedis.Jedis;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -27,6 +28,11 @@ public class MainTest {
 
 
     private static void test12(){
+        Jedis jedis = new Jedis("127.0.0.1",6379);
+        try {
+        }finally {
+            jedis.close();
+        }
     }
 
 
