@@ -14,6 +14,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  *  swagger ui
  * @author anchao
  */
+@EnableSwagger2
 @Configuration
 public class Swagger2Config {
 

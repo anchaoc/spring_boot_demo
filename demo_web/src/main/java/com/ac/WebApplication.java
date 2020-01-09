@@ -4,7 +4,6 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * 1.开启异步
@@ -21,7 +20,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 //@EnableAsync
 @EnableTransactionManagement
 //@EnableScheduling
-@EnableSwagger2
 //@EnableHello
 @MapperScan("com.ac.dao")
 //@ServletComponentScan(basePackages = "com.ac.servlet3")
