@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Slf4j
 public class UserInterceptor implements HandlerInterceptor {
-
+    /**
+     * 请求处理前拦截
+     */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         log.info("UserInterceptor.preHandle...");
