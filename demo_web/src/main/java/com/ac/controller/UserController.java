@@ -19,7 +19,7 @@ import java.util.List;
 @Api(value = "用户服务",tags = "用户服务")
 @Slf4j
 @Controller
-@RequestMapping("/user")
+@RequestMapping("user")
 public class UserController {
 
 
@@ -27,9 +27,8 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    //produces = MediaType.APPLICATION_XML_VALUE
     @ApiOperation("获取所有用户信息")
-    @GetMapping(value = "/getAll")
+    @GetMapping(value = "getAll")
     @ResponseBody
     public List getAll(){
         return  userService.getAll();
@@ -37,7 +36,7 @@ public class UserController {
 
 
     @ApiOperation("点击页面跳转")
-    @GetMapping("/click")
+    @GetMapping("click")
     public String click(){
         log.info("UserController.click.页面跳转......");
         return "/one";

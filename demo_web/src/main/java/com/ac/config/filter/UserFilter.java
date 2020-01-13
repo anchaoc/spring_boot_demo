@@ -18,7 +18,7 @@ public class UserFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException{
         HttpServletRequest re = (HttpServletRequest)request;
-        log.info("UserFilter.doFilter.requestURI={}",re.getRequestURI());
+        //log.info("UserFilter.doFilter.requestURI={}",re.getRequestURI());
         chain.doFilter(request,response);
     }
     /**
