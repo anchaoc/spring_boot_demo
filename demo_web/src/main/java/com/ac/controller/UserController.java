@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -37,9 +38,11 @@ public class UserController {
 
     @ApiOperation("点击页面跳转")
     @GetMapping("click")
-    public String click(){
+    public ModelAndView click(ModelAndView modelAndView){
+        modelAndView.setViewName("/one");
+        modelAndView.addObject("cid",10);
         log.info("UserController.click.页面跳转......");
-        return "/one";
+        return modelAndView;
     }
 
 
