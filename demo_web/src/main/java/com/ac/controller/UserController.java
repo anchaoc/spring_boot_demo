@@ -1,12 +1,10 @@
 package com.ac.controller;
 
-import com.ac.model.ListUserDTO;
-import com.ac.model.User;
 import com.ac.service.UserService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,16 +27,16 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-
-    @GetMapping(value = "/getAll",produces = MediaType.APPLICATION_XML_VALUE )
+    //produces = MediaType.APPLICATION_XML_VALUE
+    @ApiOperation("获取所有用户信息")
+    @GetMapping(value = "/getAll")
     @ResponseBody
-    public ListUserDTO getAll(){
-        List<User> list= userService.getAll();
-        return  new ListUserDTO(list);
+    public List getAll(){
+        return  userService.getAll();
     }
 
 
-
+    @ApiOperation("点击页面跳转")
     @GetMapping("/click")
     public String click(){
         log.info("UserController.click.页面跳转......");

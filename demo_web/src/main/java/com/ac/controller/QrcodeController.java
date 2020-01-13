@@ -5,10 +5,12 @@ import com.google.zxing.Result;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.annotations.ApiIgnore;
 
 /**
  * 二维码调用前端控制器
  */
+@ApiIgnore
 @RequestMapping("/Qrcode")
 @RestController
 public class QrcodeController {

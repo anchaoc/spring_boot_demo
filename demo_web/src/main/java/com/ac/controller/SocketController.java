@@ -4,6 +4,7 @@ import com.ac.config.socket.server.WebSocketServer;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import springfox.documentation.annotations.ApiIgnore;
 
 import java.io.IOException;
 
@@ -11,6 +12,7 @@ import java.io.IOException;
  * @author anchao
  * @date 2020/1/5 14:41
  */
+@ApiIgnore
 @Controller
 public class SocketController {
 

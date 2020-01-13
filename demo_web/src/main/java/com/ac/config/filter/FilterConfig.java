@@ -1,4 +1,4 @@
-package com.ac.filter;
+package com.ac.config.filter;
 
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;

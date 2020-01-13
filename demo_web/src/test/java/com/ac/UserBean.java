@@ -1,11 +1,9 @@
 package com.ac;
 
-import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.util.List;
-import java.util.Objects;
 
 /**
  * @author anchao
@@ -25,6 +23,11 @@ public class UserBean {
         this.id = id;
         this.name = name;
     }
+
+
+
+
+
 
 //    @Override
 //    public boolean equals(Object o) {

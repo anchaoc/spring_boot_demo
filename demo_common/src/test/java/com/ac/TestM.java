@@ -12,4 +12,5 @@ public class TestM {
         TestEnum.valueOf("A").get();
         TestEnum.valueOf("B").get();
     }
+
 }
