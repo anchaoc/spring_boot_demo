@@ -73,6 +73,13 @@ spring:
     password: ac221613 #这里是授权码
     default-encoding: UTF-8
 
+#mongodb
+  data:
+    mongodb:
+      host: 127.0.0.1
+      port: 27017
+      database: dev
+
 
 # REDIS配置
 #  redis:
@@ -80,6 +87,7 @@ spring:
 #    host: 127.0.0.1
 #    port: 6379
 #    timeout: 3000
+
 
 
 #持久层 mybatis-springboot
