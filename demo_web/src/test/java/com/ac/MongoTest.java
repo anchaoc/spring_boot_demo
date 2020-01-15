@@ -21,35 +21,31 @@ public class MongoTest {
     private static MongoDatabase database;
     private static MongoCollection<Document> user;
 
-    static{
-         dev = MongoClientOptions.builder().build();
-         mongoClient = new MongoClient("127.0.0.1",dev);
-         database = mongoClient.getDatabase("dev");
-         user = database.getCollection("user");
+    static {
+        dev = MongoClientOptions.builder().build();
+        mongoClient = new MongoClient("127.0.0.1", dev);
+        database = mongoClient.getDatabase("dev");
     }
-
 
 
     public static void main(String[] args) {
-        test1();
+        query();
     }
 
 
-
-    private static void test2(){
-        Document  doc =new Document();
+    private static void add() {
+        Document doc = new Document();
         doc.append("bookName", "斗1");
         doc.append("bookPrice", "21.09");
         doc.append("bookShow", "不错1");
         doc.append("bookDate", LocalDateTime.now());
+        user = database.getCollection("user");
         user.insertOne(doc);
         mongoClient.close();
     }
 
-    private static void test1() {
-         dev = MongoClientOptions.builder().build();
-         mongoClient = new MongoClient("127.0.0.1",dev);
-         database = mongoClient.getDatabase("dev");
+    private static void query() {
+        user = database.getCollection("user");
         FindIterable<Document> documents = user.find();
         MongoCursor<Document> iterator = documents.iterator();
         while (iterator.hasNext()) {
