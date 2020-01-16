@@ -21,13 +21,22 @@ import java.util.stream.Collectors;
 public class MainTest {
 
     public static void main(String[] args) {
-        test12();
+        test12(2020);
     }
 
 
 
-    private static void test12() {
 
+
+
+    /**
+     * 润年
+     */
+    private static void test12(long year) {
+
+        if((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)){
+            System.out.println(true);
+        }
 
     }
 
