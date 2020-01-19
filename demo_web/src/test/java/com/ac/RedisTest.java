@@ -2,13 +2,18 @@ package com.ac;
 
 import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.dao.DataAccessException;
+import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
-import org.springframework.data.redis.support.atomic.RedisAtomicLong;
+import org.springframework.data.redis.core.RedisCallback;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.RedisSerializer;
 import redis.clients.jedis.Jedis;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @author anchao
@@ -69,23 +74,34 @@ public class RedisTest {
      * redis template
      */
     private static void test3(){
+        LocalDate now = LocalDate.now();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMMdd");
 
         RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration("127.0.0.1",6379);
         JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory(redisStandaloneConfiguration);
-//        RedisTemplate<Object, Object> redisTemplate = new RedisTemplate<>();
+        RedisTemplate<Object, Object> redisTemplate = new RedisTemplate<>();
+        redisTemplate.setValueSerializer(RedisSerializer.string());
+        redisTemplate.setKeySerializer(RedisSerializer.string());
+        redisTemplate.setConnectionFactory(jedisConnectionFactory);
+        redisTemplate.afterPropertiesSet();
 
-//        redisTemplate.setKeySerializer(RedisSerializer.string());
-//        redisTemplate.setValueSerializer(RedisSerializer.string());
-//        redisTemplate.setConnectionFactory(jedisConnectionFactory);
-//        redisTemplate.afterPropertiesSet();
-
-        //Object execute = redisTemplate.execute((RedisCallback<Object>) connection -> connection.incrBy("incr-key".getBytes(), 1));
+//        String oldDate = now.plusDays(-1).format(dateTimeFormatter);
+//        String nowDate = now.format(dateTimeFormatter);
 //
-        RedisAtomicLong redisAtomicLong = new RedisAtomicLong("test-1", jedisConnectionFactory);
-        redisAtomicLong.expire(24, TimeUnit.HOURS);
-        long incrementAndGet = redisAtomicLong.incrementAndGet();
-        System.out.println(incrementAndGet);
+//        Boolean delete = redisTemplate.delete("test-" + oldDate);
+//        System.out.println(delete);
+//
+//
+//        RedisAtomicLong redisAtomicLong = new RedisAtomicLong("test-"+nowDate, jedisConnectionFactory);
+//        long incrementAndGet = redisAtomicLong.incrementAndGet();
+//        System.out.println(incrementAndGet);
 
-
+        redisTemplate.execute(new RedisCallback<Object>() {
+            @Override
+            public Object doInRedis(RedisConnection connection) throws DataAccessException {
+                System.out.println(connection.setNX("lock-key".getBytes(), "1".getBytes()));
+                return null;
+            }
+        });
     }
 }

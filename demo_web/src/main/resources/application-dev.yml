@@ -108,6 +108,8 @@ mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
+
+
 #线程池配置
 threadpool:
   core-pool-size: 10 #线程池维护线程的最少数量 空闲时仍保留在池中的线程数
@@ -116,4 +118,9 @@ threadpool:
   keep-alive-seconds: 300 #允许的空闲时间
 
 
-
+# pagehelper分页
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql

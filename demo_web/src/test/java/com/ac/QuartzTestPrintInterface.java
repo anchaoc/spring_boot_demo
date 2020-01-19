@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = WebApplication.class)
 @Slf4j
-public class QuartzTest {
+public class QuartzTestPrintInterface {
 
     @Autowired
     private JobInterface jobInterface;

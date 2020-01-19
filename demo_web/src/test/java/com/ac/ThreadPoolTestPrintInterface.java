@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = WebApplication.class)
 @Slf4j
-public class ThreadPoolTest {
+public class ThreadPoolTestPrintInterface {
     //
 //    @Resource
 //    ThreadPoolTaskExecutor threadPoolTaskExecutor;
