@@ -4,9 +4,11 @@ import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
+import org.springframework.data.redis.support.atomic.RedisAtomicLong;
 import redis.clients.jedis.Jedis;
 
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author anchao
@@ -79,9 +81,10 @@ public class RedisTest {
 
         //Object execute = redisTemplate.execute((RedisCallback<Object>) connection -> connection.incrBy("incr-key".getBytes(), 1));
 //
-//        RedisAtomicLong redisAtomicLong = new RedisAtomicLong("test", jedisConnectionFactory);
-//        long incrementAndGet = redisAtomicLong.incrementAndGet();
-//        System.out.println(incrementAndGet);
+        RedisAtomicLong redisAtomicLong = new RedisAtomicLong("test-1", jedisConnectionFactory);
+        redisAtomicLong.expire(24, TimeUnit.HOURS);
+        long incrementAndGet = redisAtomicLong.incrementAndGet();
+        System.out.println(incrementAndGet);
 
 
     }
