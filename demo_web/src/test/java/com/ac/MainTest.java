@@ -9,6 +9,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.Period;
 import java.time.ZoneId;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
@@ -22,11 +23,17 @@ import java.util.stream.Collectors;
 public class MainTest {
 
     public static void main(String[] args) {
-        test12(2020);
+        test13();
     }
 
 
 
+
+
+    private static void test13(){
+        Period between = Period.between(LocalDate.now(), LocalDate.now());
+        System.out.println(between.getDays());
+    }
 
 
 

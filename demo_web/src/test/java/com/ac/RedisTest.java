@@ -4,7 +4,6 @@ import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
-import org.springframework.data.redis.support.atomic.RedisAtomicLong;
 import redis.clients.jedis.Jedis;
 
 import java.util.HashMap;
@@ -24,7 +23,7 @@ public class RedisTest {
 
 
     public static void main(String[] args) {
-        test1();
+        test3();
     }
 
 
@@ -34,11 +33,11 @@ public class RedisTest {
         //System.out.println(jedis.hset("hash-key","set-fieid","1"));
         // System.out.println(jedis.zadd("zset-key",1,"1"));
         //System.out.println(jedis.sadd("set-key", new String[]{"1","2"}));
-        RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration("127.0.0.1",6379);
-        JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory(redisStandaloneConfiguration);
-        RedisAtomicLong test = new RedisAtomicLong("test",jedisConnectionFactory);
-        long andIncrement = test.getAndIncrement();
-        System.out.println(andIncrement);
+//        RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration("127.0.0.1",6379);
+//        JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory(redisStandaloneConfiguration);
+//        RedisAtomicLong test = new RedisAtomicLong("test",jedisConnectionFactory);
+//        long andIncrement = test.getAndIncrement();
+//        System.out.println(andIncrement);
     }
 
 
@@ -62,5 +61,28 @@ public class RedisTest {
             System.out.println("jedis close");
             jedis.close();
         }
+    }
+
+    /**
+     * redis template
+     */
+    private static void test3(){
+
+        RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration("127.0.0.1",6379);
+        JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory(redisStandaloneConfiguration);
+//        RedisTemplate<Object, Object> redisTemplate = new RedisTemplate<>();
+
+//        redisTemplate.setKeySerializer(RedisSerializer.string());
+//        redisTemplate.setValueSerializer(RedisSerializer.string());
+//        redisTemplate.setConnectionFactory(jedisConnectionFactory);
+//        redisTemplate.afterPropertiesSet();
+
+        //Object execute = redisTemplate.execute((RedisCallback<Object>) connection -> connection.incrBy("incr-key".getBytes(), 1));
+//
+//        RedisAtomicLong redisAtomicLong = new RedisAtomicLong("test", jedisConnectionFactory);
+//        long incrementAndGet = redisAtomicLong.incrementAndGet();
+//        System.out.println(incrementAndGet);
+
+
     }
 }
