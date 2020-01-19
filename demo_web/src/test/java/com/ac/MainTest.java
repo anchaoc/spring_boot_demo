@@ -1,6 +1,7 @@
 package com.ac;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ClassPathResource;
 
@@ -133,9 +134,9 @@ public class MainTest {
         UserBean userBean4 = new UserBean(1L, "weihongda");
         UserBean userBean5 = new UserBean(1L, "anchao");
         ArrayList<UserBean> userBeanArrayList = Lists.newArrayList(userBean, userBean2, userBean3, userBean4,userBean5);
-        Map<Long, String> collect = userBeanArrayList.stream().collect(Collectors.toMap(UserBean::getId
+        HashMap<Long, String> collect = userBeanArrayList.stream().collect(Collectors.toMap(UserBean::getId
                 ,u -> u.getName(),(v1,v2) -> v1+","+v2
-                ));
+                , Maps::newHashMap));
         System.out.println(collect);
     }
 
