@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ClassPathResource;
 
 import java.io.*;
+import java.lang.reflect.Field;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -22,14 +23,26 @@ import java.util.stream.Collectors;
 @Slf4j
 public class MainTest {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         test14();
     }
 
 
-
-    private static void test14(){
-
+    /**
+     * javabean to map
+     */
+    private static void test14() throws IllegalAccessException {
+        UserBean userBean2 = new UserBean(4L, "haha");
+        Class<? extends UserBean> aClass = userBean2.getClass();
+        Field[] fields = aClass.getDeclaredFields();
+        LinkedHashMap<String, Object> map = Maps.newLinkedHashMap();
+        for (Field field : fields) {
+            field.setAccessible(true);
+            String name = field.getName();
+            Object value = field.get(userBean2);
+            map.put(name,value);
+        }
+        System.out.println(map);
     }
 
 
