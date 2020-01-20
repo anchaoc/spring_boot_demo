@@ -34,4 +34,11 @@ public class RestTemplateTest {
         Map forObject = restTemplate.getForObject(URL, Map.class);
         log.info("返回："+ GsonUtil.toJson(forObject));
     }
+
+
+    private static void test2() throws Exception {
+        RestTemplate restTemplate = new RestTemplate();
+        Map forObject = restTemplate.getForObject(URL, Map.class);
+        log.info("返回："+ GsonUtil.toJson(forObject));
+    }
 }
