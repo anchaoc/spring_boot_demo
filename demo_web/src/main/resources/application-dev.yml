@@ -11,11 +11,11 @@ spring:
     username: root
     password: root
     url: jdbc:mysql://localhost:3306/test_dev?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=CONVERT_TO_NULL
+    hikari:
+      connection-timeout: 2000
 
 
-
-
-#quartz相关属性配置
+  #quartz相关属性配置
   quartz:
     properties:
       org:
@@ -39,13 +39,6 @@ spring:
     job-store-type: jdbc  #数据库方式
 
 
-
-
-
-#热部署重启
-  devtools:
-    restart:
-      enabled: true
 
  #静态页thymeleaf
   thymeleaf:
@@ -74,11 +67,11 @@ spring:
     default-encoding: UTF-8
 
 #mongodb
-  data:
-    mongodb:
-      host: 127.0.0.1
-      port: 27017
-      database: dev
+#  data:
+#    mongodb:
+#      host: 127.0.0.1
+#      port: 27017
+#      database: dev
 
 
 # REDIS配置
@@ -109,6 +102,13 @@ mybatis-plus:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 
+# pagehelper分页
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
 
 #线程池配置
 threadpool:
@@ -116,11 +116,3 @@ threadpool:
   max-pool-size: 20 #线程池维护线程的最大数量
   queue-capacity: 1000 # 缓存队列
   keep-alive-seconds: 300 #允许的空闲时间
-
-
-# pagehelper分页
-pagehelper:
-  helperDialect: mysql
-  reasonable: true
-  supportMethodsArguments: true
-  params: count=countSql

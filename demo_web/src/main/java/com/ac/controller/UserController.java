@@ -1,13 +1,10 @@
 package com.ac.controller;
 
-import com.ac.common.utils.Constants;
-import com.ac.mongo.MongoService;
 import com.ac.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,8 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
-import java.util.Map;
-import java.util.regex.Pattern;
 
 /** 用户服务
  * @author anchao
@@ -28,8 +23,8 @@ import java.util.regex.Pattern;
 @RequestMapping("user")
 public class UserController {
 
-    @Autowired
-    private MongoService mongoService;
+//    @Autowired
+//    private MongoService mongoService;
 
     @Autowired
     private UserService userService;
@@ -52,16 +47,16 @@ public class UserController {
     }
 
 
-    @ApiOperation("测试mongo查询")
-    @GetMapping(value = "mongoQ")
-    @ResponseBody
-    public List<Map> mongoQ(){
-        Criteria criteria = new Criteria("bookName");
-        String format = String.format(Constants.LIKE_CONTAINS, "2");
-        criteria.regex(Pattern.compile(format));
-        List<Map> user = mongoService.query(criteria, "user");
-        return  user;
-    }
+//    @ApiOperation("测试mongo查询")
+//    @GetMapping(value = "mongoQ")
+//    @ResponseBody
+//    public List<Map> mongoQ(){
+//        Criteria criteria = new Criteria("bookName");
+//        String format = String.format(Constants.LIKE_CONTAINS, "2");
+//        criteria.regex(Pattern.compile(format));
+//        List<Map> user = mongoService.query(criteria, "user");
+//        return  user;
+//    }
 
 
 

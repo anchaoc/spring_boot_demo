@@ -1,4 +1,4 @@
-package com.ac.config;
+package com.ac.config.swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
