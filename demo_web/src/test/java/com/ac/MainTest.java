@@ -64,14 +64,15 @@ public class MainTest {
 
 
     /**
-     * 润年
+     *
      */
-    private static void test12(long year) {
-
-        if((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)){
-            System.out.println(true);
-        }
-
+    private static void test12() {
+        UserBean userBean = new UserBean(1L, "anchao");
+        UserBean userBean2 = new UserBean(4L, "haha");
+        UserBean userBean3 = new UserBean(2L, "hehe");
+        UserBean userBean4 = new UserBean(1L, "weihongda");
+        UserBean userBean5 = new UserBean(1L, "anchao");
+        ArrayList<UserBean> userBeanArrayList = Lists.newArrayList(userBean, userBean2, userBean3, userBean4,userBean5);
     }
 
 
