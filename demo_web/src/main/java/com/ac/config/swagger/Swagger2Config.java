@@ -1,5 +1,7 @@
 package com.ac.config.swagger;
 
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -18,8 +20,13 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 public class Swagger2Config {
 
+    @Value("${spring.profiles.active}")
+    private String profile;
+
+
     @Bean
     public Docket createRestApi() {
+        boolean mark = !(StringUtils.isNotBlank(profile) && profile.contains("prd"));
         ApiInfo apiInfo = new ApiInfoBuilder()
                 .title("spring_boot_demo")
                 .description("api service")
@@ -28,6 +35,7 @@ public class Swagger2Config {
 
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo)
+                .enable(mark)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.ac.controller"))
                 .paths(PathSelectors.any())
