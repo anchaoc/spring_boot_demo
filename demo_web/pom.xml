@@ -116,13 +116,8 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
-
-
-
-
-
-
     </dependencies>
+
 
     <build>
         <plugins>
@@ -130,10 +125,9 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <fork>true</fork>
+                    <mainClass>com.ac.WebApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
 </project>

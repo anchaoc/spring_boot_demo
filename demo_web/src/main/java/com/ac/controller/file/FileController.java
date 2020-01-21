@@ -1,7 +1,6 @@
 package com.ac.controller.file;
 
 import com.ac.common.utils.GuavaStringUtils;
-import com.ac.service.UplodaFileService;
 import com.ac.webutil.DateUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.annotation.Resource;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -31,8 +29,8 @@ import java.time.format.DateTimeFormatter;
 @RequestMapping("file")
 public class FileController {
 
-    @Resource
-    private UplodaFileService uplodaFileService;
+//    @Resource
+//    private UplodaFileService uplodaFileService;
 
 
 

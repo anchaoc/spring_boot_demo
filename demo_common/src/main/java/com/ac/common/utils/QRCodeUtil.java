@@ -1,4 +1,5 @@
-package com.ac.qrcode;
+package com.ac.common.utils;
+
 import com.google.zxing.*;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.BitMatrix;

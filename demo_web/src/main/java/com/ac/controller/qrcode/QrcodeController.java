@@ -1,6 +1,6 @@
 package com.ac.controller.qrcode;
 
-import com.ac.qrcode.QRCodeUtil;
+import com.ac.common.utils.QRCodeUtil;
 import com.google.zxing.Result;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
