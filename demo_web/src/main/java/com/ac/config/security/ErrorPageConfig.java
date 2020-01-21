@@ -23,14 +23,13 @@ public class ErrorPageConfig {
      */
     @Bean
     public WebServerFactoryCustomizer web() {
-        WebServerFactoryCustomizer<ConfigurableWebServerFactory> web = new WebServerFactoryCustomizer<ConfigurableWebServerFactory>() {
-            @Override
-            public void customize(ConfigurableWebServerFactory factory) {
+
+        WebServerFactoryCustomizer<ConfigurableWebServerFactory> webServer = (factory)-> {
                 ErrorPage errorPage = new ErrorPage(HttpStatus.FORBIDDEN,"/403");
                 HashSet<ErrorPage> errors = Sets.newHashSet(errorPage);
                 factory.setErrorPages(errors);
-            }
         };
-        return web;
+
+        return webServer;
     }
 }
