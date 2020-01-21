@@ -1,10 +1,12 @@
 package com.ac.enums;
 
+import com.ac.service.TestEnumInterface;
+
 /**
  * @author anchao
  * @date 2019/12/23 10:45
  */
-public enum TestEnum implements  TestEnumInterface{
+public enum TestEnum implements TestEnumInterface {
 
     /**
      *
