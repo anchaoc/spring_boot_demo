@@ -10,3 +10,4 @@
 7. servlet3.0+
 8. 自定义enable模块配置
 9. easypoi
+10. security

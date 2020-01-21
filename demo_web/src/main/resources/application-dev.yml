@@ -58,7 +58,6 @@ spring:
 
 
 
-
   #邮件
   mail:
     host: smtp.163.com
