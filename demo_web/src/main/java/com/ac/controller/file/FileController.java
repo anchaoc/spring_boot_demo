@@ -1,4 +1,4 @@
-package com.ac.controller;
+package com.ac.controller.file;
 
 import com.ac.common.utils.GuavaStringUtils;
 import com.ac.service.UplodaFileService;

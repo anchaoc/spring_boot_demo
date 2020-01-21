@@ -1,4 +1,4 @@
-package com.ac.config;
+package com.ac.config.transaction;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;

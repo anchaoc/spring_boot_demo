@@ -1,15 +1,10 @@
-package com.ac.controller;
+package com.ac.controller.poi;
 
-import com.ac.config.poi.EasyPoiUtil;
-import com.ac.model.User;
-import com.ac.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
 
 /**
  * @author anchao
@@ -19,14 +14,11 @@ import java.util.List;
 @Controller
 public class EasyPoiController {
 
-    @Autowired
-    private UserService userService;
 
 
     @GetMapping("/e")
     public void test1(HttpServletResponse response){
-        List<User> list = userService.list();
-        EasyPoiUtil.exportExcel(list,"sheet_test", User.class,"用户信息.xls",response);
+       // EasyPoiUtil.exportExcel(list,"sheet_test", User.class,"用户信息.xls",response);
     }
 
 }

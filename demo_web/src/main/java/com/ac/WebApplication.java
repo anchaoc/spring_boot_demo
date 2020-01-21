@@ -19,7 +19,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 //@EnableAsync
 @EnableTransactionManagement
 //@EnableScheduling
-//@EnableHello
 //@ServletComponentScan(basePackages = "com.ac.servlet3")
 public class WebApplication {
     public static void main(String[] args) {

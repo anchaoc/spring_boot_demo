@@ -1,4 +1,4 @@
-package com.ac.controller;
+package com.ac.controller.socket;
 
 import com.ac.config.socket.server.WebSocketServer;
 import org.springframework.stereotype.Controller;
@@ -21,7 +21,7 @@ public class SocketController {
     @GetMapping("/socket/{cid}")
     public ModelAndView socket(@PathVariable String cid) {
         ModelAndView mav=new ModelAndView();
-        mav.setViewName("one");
+        mav.setViewName("socket");
         mav.addObject("cid", cid);
         return mav;
     }

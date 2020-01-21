@@ -1,4 +1,4 @@
-package com.ac.controller;
+package com.ac.controller.qrcode;
 
 import com.ac.qrcode.QRCodeUtil;
 import com.google.zxing.Result;
