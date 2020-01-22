@@ -4,31 +4,24 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.Data;
+import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.util.List;
 
-/**
- * @author anchao
- */
-@XmlRootElement
-@TableName("test_user")
-public class User implements Serializable {
+@Data
+@TableName("user")
+public class User implements UserDetails, Serializable {
 
-    @TableId(value = "id",type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
+    private String username;
+    private String password;
 
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private String name;
+    @TableField(exist = false)
+    private List<Role> authorities;
 
-    @TableField(exist=false)
-    private String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-
-    @XmlElement
     public Long getId() {
         return id;
     }
@@ -36,21 +29,64 @@ public class User implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-    @XmlElement
-    public String getName() {
-        return name;
+
+    @Override
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    @XmlElement
-    public String getDateTime() {
-        return dateTime;
+    @Override
+    public String getPassword() {
+        return password;
     }
 
-    public void setDateTime(String dateTime) {
-        this.dateTime = dateTime;
+    public void setPassword(String password) {
+        this.password = password;
     }
+
+    @Override
+    public List<Role> getAuthorities() {
+        return authorities;
+    }
+
+    public void setAuthorities(List<Role> authorities) {
+        this.authorities = authorities;
+    }
+
+    /**
+     * 用户账号是否过期
+     */
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    /**
+     * 用户账号是否被锁定
+     */
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    /**
+     * 用户密码是否过期
+     */
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    /**
+     * 用户是否可用
+     */
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
 }

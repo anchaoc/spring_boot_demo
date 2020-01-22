@@ -4,6 +4,9 @@ server:
   servlet:
     context-path: /demo/api
 
+
+
+
 #数据源 mysql 8.0.16
 spring:
   datasource:
@@ -115,3 +118,4 @@ threadpool:
   max-pool-size: 20 #线程池维护线程的最大数量
   queue-capacity: 1000 # 缓存队列
   keep-alive-seconds: 300 #允许的空闲时间
+
