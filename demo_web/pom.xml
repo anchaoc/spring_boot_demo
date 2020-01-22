@@ -13,6 +13,8 @@
     <name>demo_web</name>
     <packaging>jar</packaging>
 
+    <properties>
+    </properties>
 
 
     <dependencies>
@@ -60,7 +62,7 @@
         </dependency>
         <dependency>
             <groupId>org.thymeleaf.extras</groupId>
-            <artifactId>thymeleaf-extras-security4</artifactId>
+            <artifactId>thymeleaf-extras-springsecurity5</artifactId>
         </dependency>
 
 <!--        <dependency>-->

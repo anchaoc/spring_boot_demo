@@ -2,7 +2,6 @@ package com.ac.config.security;
 
 import com.ac.service.security.MyUserDetailsService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -11,6 +10,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import javax.annotation.Resource;
 
 /**
  * @author anchao
@@ -22,7 +23,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableGlobalMethodSecurity(prePostEnabled=true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
+    @Resource(name ="userService")
     private MyUserDetailsService userService;
 
 
@@ -31,28 +32,25 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        //加密 验证密码
         auth.userDetailsService(userService).passwordEncoder(new PasswordEncoder() {
             @Override
             public String encode(CharSequence rawPassword) {
                 BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
                 String encode = bCryptPasswordEncoder.encode(rawPassword);
-                log.debug("encode encode={}",encode);
+                log.info("encode encode-------------->{}",encode);
                 return encode;
             }
             @Override
             public boolean matches(CharSequence rawPassword, String encodedPassword) {
-                log.debug("matches encodedPassword={}",encodedPassword);
+                log.warn("matches encodedPassword-------------->{}",encodedPassword);
                 BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-                log.warn("matches rawPassword={}",rawPassword);
+                log.warn("matches rawPassword-------------->{}",rawPassword);
+                System.err.println(bCryptPasswordEncoder.matches(rawPassword, encodedPassword));
                 return bCryptPasswordEncoder.matches(rawPassword,encodedPassword);
 
             }
         });
-//        auth
-//                .inMemoryAuthentication()
-//                .withUser("anchao")
-//                .password(passwordEncoder().encode("anchao123"))
-//                .authorities("TAX_QUERY");
     }
 
     /**
@@ -61,22 +59,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/css/**","/js/**").permitAll()
+                //放行
+                .antMatchers("/","/index").permitAll()
+                //其他认证
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().successForwardUrl("/t/list")
+                .formLogin().successForwardUrl("/index")
+                .failureUrl("/login-error").permitAll()
                 .and()
-                .exceptionHandling().accessDeniedPage( "/403" );
-        http.logout().logoutSuccessUrl( "/" );
-        //        http
-//                .authorizeRequests()
-//                .antMatchers("/t/add").hasAnyAuthority("TAX_ADD")
-//                .antMatchers("/t/query").hasAnyAuthority("TAX_QUERY")
-//                .antMatchers("/**")
-//                .fullyAuthenticated()
-//                .and()
-//                .formLogin();
+                .logout()
+                .logoutSuccessUrl("/index");
 
     }
 
+    //    public static void main(String[] args) {
+//        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+//        String encode = bCryptPasswordEncoder.encode("123");
+//        log.info("encode encode-------------->{}",encode);
+//    }
 }

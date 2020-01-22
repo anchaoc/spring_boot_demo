@@ -6,13 +6,17 @@ DROP TABLE IF EXISTS `permission`;
 
 CREATE TABLE `user` (
 `id` bigint(11) NOT NULL AUTO_INCREMENT,
+`usercode` varchar(255) NOT NULL,
 `username` varchar(255) NOT NULL,
 `password` varchar(255) NOT NULL,
+`salt` varchar(255) NOT NULL,
+`del` int(2) NOT NULL default 0,
 PRIMARY KEY (`id`) 
 );
 CREATE TABLE `role` (
 `id` bigint(11) NOT NULL AUTO_INCREMENT,
-`name` varchar(255) NOT NULL,
+`role_code` varchar(255) NOT NULL,
+`role_name` varchar(255) NOT NULL,
 PRIMARY KEY (`id`) 
 );
 CREATE TABLE `user_role` (
@@ -25,22 +29,26 @@ CREATE TABLE `role_permission` (
 );
 CREATE TABLE `permission` (
 `id` bigint(11) NOT NULL AUTO_INCREMENT,
-`url` varchar(255) NOT NULL,
 `name` varchar(255) NOT NULL,
+`code` varchar(255) NOT NULL,
+`type` int(10) NOT NULL,
+`url` varchar(255) NOT NULL,
+`sort` int(10) NOT NULL,
 `description` varchar(255) NULL,
 `pid` bigint(11) NOT NULL,
 PRIMARY KEY (`id`) 
 );
 
-INSERT INTO user (id, username, password) VALUES (1,'user','e10adc3949ba59abbe56e057f20f883e'); 
-INSERT INTO user (id, username , password) VALUES (2,'admin','e10adc3949ba59abbe56e057f20f883e'); 
-INSERT INTO role (id, name) VALUES (1,'USER');
-INSERT INTO role (id, name) VALUES (2,'ADMIN');
-INSERT INTO permission (id, url, name, pid) VALUES (1,'/user/common','common',0);
-INSERT INTO permission (id, url, name, pid) VALUES (2,'/user/admin','admin',0);
-INSERT INTO user_role (user_id, role_id) VALUES (1, 1);
-INSERT INTO user_role (user_id, role_id) VALUES (2, 1);
-INSERT INTO user_role (user_id, role_id) VALUES (2, 2);
-INSERT INTO role_permission (role_id, permission_id) VALUES (1, 1);
-INSERT INTO role_permission (role_id, permission_id) VALUES (2, 1);
-INSERT INTO role_permission (role_id, permission_id) VALUES (2, 2);
+INSERT INTO user (id, usercode,username, password,salt,del) VALUES (1,'user','user','$2a$10$2vXPUc/BZk8w7Qv62LsNHeF3FwtPbcEs4lmbPioOmpHbd1DFa1Qvi','user',0); 
+INSERT INTO user (id, usercode,username, password,salt,del) VALUES (2,'admin','admin','$2a$10$2vXPUc/BZk8w7Qv62LsNHeF3FwtPbcEs4lmbPioOmpHbd1DFa1Qvi','admin',0); 
+INSERT INTO user (id, usercode,username, password,salt,del) VALUES (3,'anchao','anchao','$2a$10$2vXPUc/BZk8w7Qv62LsNHeF3FwtPbcEs4lmbPioOmpHbd1DFa1Qvi','anchao',0); 
+
+INSERT INTO role (id, role_code,role_name) VALUES (1,'USER','普通用户');
+INSERT INTO role (id, role_code,role_name) VALUES (2,'ADMIN','管理员');
+
+INSERT INTO permission (id, name, code, type,url,sort,description,pid) VALUES (1,'查看税','taxQuery',0,'/tax/query.html',0,'暂无描述',0);
+INSERT INTO permission (id, name, code, type,url,sort,description,pid) VALUES (2,'添加税','taxAdd',0,'/tax/add.html',1,'暂无描述',0);
+
+
+INSERT INTO user_role (user_id, role_id) VALUES (1, 1),(2, 2),(3, 2);
+INSERT INTO role_permission (role_id, permission_id) VALUES (1, 1),(2, 1),(2, 2);

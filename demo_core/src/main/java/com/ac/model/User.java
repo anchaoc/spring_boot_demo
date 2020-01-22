@@ -1,92 +1,104 @@
 package com.ac.model;
 
+import com.ac.dao.RoleMapper;
+import com.ac.dao.UserRoleMapper;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import lombok.Data;
-import org.springframework.security.core.userdetails.UserDetails;
+import lombok.ToString;
+import org.springframework.util.CollectionUtils;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Data
+@ToString
 @TableName("user")
-public class User implements UserDetails, Serializable {
+public class User implements Serializable {
+
 
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
+
+    /**
+     * 用户编号
+     */
+    private String usercode;
+
+    /**
+     * 用户名
+     */
     private String username;
+
+    /**
+     * 密码
+     */
     private String password;
 
+    /**
+     * 盐
+     */
+    private String salt;
+
+    /**
+     * 删除标识
+     */
+    private Integer del;
+
+    /**
+     * 用户角色
+     */
     @TableField(exist = false)
-    private List<Role> authorities;
+    private List<Role> roleList;
 
-    public Long getId() {
-        return id;
+
+
+
+
+    /**
+     * 设置用户对应角色集合
+     */
+    public User getSetRoleList(UserRoleMapper userRoleMapper,RoleMapper roleMapper){
+
+        LambdaQueryWrapper<UserRole> userQuery = Wrappers.lambdaQuery();
+        userQuery.eq(UserRole::getUserId,this.getId());
+
+        List<UserRole> userRoles = userRoleMapper.selectList(userQuery);
+
+        if(CollectionUtils.isEmpty(userRoles)){
+            this.setRoleList(new ArrayList<>());
+            return this;
+        }
+
+        Set<Long> roleIds = userRoles.stream().map(UserRole::getRoleId).collect(Collectors.toSet());
+
+        LambdaQueryWrapper<Role> roleQuery = Wrappers.lambdaQuery();
+        roleQuery.in(Role::getId,roleIds);
+
+        List<Role> roles = roleMapper.selectList(roleQuery);
+
+        this.setRoleList(roles);
+
+        return this;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+
+
+
+
+
+    public User() {
     }
 
-    @Override
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
+    public User(String username, String password) {
         this.username = username;
-    }
-
-    @Override
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
         this.password = password;
     }
-
-    @Override
-    public List<Role> getAuthorities() {
-        return authorities;
-    }
-
-    public void setAuthorities(List<Role> authorities) {
-        this.authorities = authorities;
-    }
-
-    /**
-     * 用户账号是否过期
-     */
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    /**
-     * 用户账号是否被锁定
-     */
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    /**
-     * 用户密码是否过期
-     */
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    /**
-     * 用户是否可用
-     */
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
-
 }

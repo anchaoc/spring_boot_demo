@@ -1,21 +1,31 @@
 package com.ac.controller.error;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import springfox.documentation.annotations.ApiIgnore;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
-/**
- * @author anchao
- * @date 2020/1/21 13:14
- */
-@ApiIgnore
-@Controller
+@Slf4j
+@ControllerAdvice
 public class ErrorController {
 
-
-    @GetMapping("403")
-    public String list(){
-        return "/403";
+    @ExceptionHandler(Throwable.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public String test(final Throwable throwable, final Model model) {
+        log.error("Exception during execution of SpringSecurity application", throwable);
+        String errorMessage = (throwable != null ? throwable.getMessage() : "Unknown error");
+        model.addAttribute("errorMessage", errorMessage);
+        return "error";
     }
 
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    public String forbidden(final Throwable throwable, final Model model) {
+        log.error("Exception during execution of SpringSecurity application", throwable);
+        String errorMessage = (throwable != null ? throwable.getMessage() : "Unknown error");
+        model.addAttribute("errorMessage", errorMessage);
+        return "error";
+    }
 }

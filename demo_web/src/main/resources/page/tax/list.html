@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>list 页面</title>
@@ -7,7 +8,20 @@
 <body>
 <h1>列表</h1>
 <a href="/demo/api/t/query">查询</a>
+<a href="/demo/api/t/add" >添加</a>
 <br/>
-<a href="/demo/api/t/add">添加</a>
+<div sec:authorize="hasAuthority('taxAdd')">
+   <button>检测按钮权限</button>
+</div>
+<br/>
+<div th:fragment="logout" class="logout" sec:authorize="isAuthenticated()">
+    Logged in user: <span sec:authentication="name"></span> |
+    Roles: <span sec:authentication="principal.authorities"></span>
+    <div>
+        <form action="#" th:action="@{/logout}" method="post">
+            <input type="submit" value="退出" />
+        </form>
+    </div>
+</div>
 </body>
 </html>

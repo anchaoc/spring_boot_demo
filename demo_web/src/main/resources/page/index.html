@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html   xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <title>list 页面</title>
+</head>
+<body>
+<h1>列表</h1>
+<div sec:authorize="hasAuthority('taxAdd')">
+    <button>检测按钮权限</button>
+</div>
+<a href="/demo/api/t/list">去列表</a>
+<br/>
+-->
+</body>
+</html>
