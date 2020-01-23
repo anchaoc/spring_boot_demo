@@ -26,6 +26,7 @@ import java.util.List;
 @Component("userService")
 public class MyUserDetailsService extends ServiceImpl<UserMapper, User> implements UserDetailsService {
 
+    private static final String ROLE ="ROLE_";
 
     @Resource
     private UserRoleMapper ur;
@@ -50,6 +51,7 @@ public class MyUserDetailsService extends ServiceImpl<UserMapper, User> implemen
         u.getSetRoleList(ur,r);
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
         for (Role role : u.getRoleList()) {
+            authorities.add(new SimpleGrantedAuthority(ROLE+role.getRoleCode()));
             role.getSetPermissionList(rp,p);
             for (Permission permission : role.getPermissionList()) {
                 authorities.add(new SimpleGrantedAuthority(permission.getCode()));
