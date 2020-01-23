@@ -39,9 +39,9 @@ CREATE TABLE `permission` (
 PRIMARY KEY (`id`) 
 );
 
-INSERT INTO user (id, usercode,username, password,salt,del) VALUES (1,'user','user','$2a$10$2vXPUc/BZk8w7Qv62LsNHeF3FwtPbcEs4lmbPioOmpHbd1DFa1Qvi','user',0); 
-INSERT INTO user (id, usercode,username, password,salt,del) VALUES (2,'admin','admin','$2a$10$2vXPUc/BZk8w7Qv62LsNHeF3FwtPbcEs4lmbPioOmpHbd1DFa1Qvi','admin',0); 
-INSERT INTO user (id, usercode,username, password,salt,del) VALUES (3,'anchao','anchao','$2a$10$2vXPUc/BZk8w7Qv62LsNHeF3FwtPbcEs4lmbPioOmpHbd1DFa1Qvi','anchao',0); 
+INSERT INTO user (id, usercode,username, password,salt,del) VALUES (1,'user','user','$2a$10$Nt9a.K.zflcnwTLDFmFWle5ppVC3TIrKJJBzRH1V3iBKQ/rduRmq6','user',0);
+INSERT INTO user (id, usercode,username, password,salt,del) VALUES (2,'admin','admin','$2a$10$Nt9a.K.zflcnwTLDFmFWle5ppVC3TIrKJJBzRH1V3iBKQ/rduRmq6','admin',0);
+INSERT INTO user (id, usercode,username, password,salt,del) VALUES (3,'anchao','anchao','$2a$10$Nt9a.K.zflcnwTLDFmFWle5ppVC3TIrKJJBzRH1V3iBKQ/rduRmq6','anchao',0);
 
 INSERT INTO role (id, role_code,role_name) VALUES (1,'USER','普通用户');
 INSERT INTO role (id, role_code,role_name) VALUES (2,'ADMIN','管理员');

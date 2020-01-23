@@ -21,13 +21,12 @@ public class TaxController {
         return "/tax/list";
     }
 
-    @PreAuthorize("hasAuthority('taxQuery')")
     @GetMapping("query")
     public String query(){
         return "/tax/query";
     }
 
-    @PreAuthorize("hasRole('taxAdd')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("add")
     public String add(){
         return "/tax/add";
