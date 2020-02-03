@@ -1,4 +1,4 @@
-package com.ac;
+package com.ac.maintest;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -30,7 +30,6 @@ public class MainTest {
 
 
     private static void test15(){
-
 
     }
 

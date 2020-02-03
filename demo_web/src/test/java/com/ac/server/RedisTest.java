@@ -1,4 +1,4 @@
-package com.ac;
+package com.ac.server;
 
 import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;

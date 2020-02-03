@@ -1,4 +1,4 @@
-package com.ac;
+package com.ac.server;
 
 import com.ac.common.utils.GsonUtil;
 import lombok.extern.slf4j.Slf4j;
