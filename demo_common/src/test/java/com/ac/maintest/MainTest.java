@@ -1,12 +1,13 @@
-package com.ac;
+package com.ac.maintest;
 
 /**
  * @author anchao
- * @date 2020/1/19 16:30
+ * @date 2020/2/12 17:11
  */
-public class HuToolTest {
-
+public class MainTest {
 
     public static void main(String[] args) {
     }
+
+
 }
