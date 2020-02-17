@@ -13,6 +13,16 @@ public class MainTest {
     public static void main(String[] args) {
         // tochar();
         //testCollections();
+        //testCollections2();
+    }
+
+    /**
+     * 集合 ： 置换 洗牌
+     */
+    private static void testCollections2() {
+        List<Integer> integers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8);
+        Collections.shuffle(integers);
+        System.out.println(integers.subList(0,3));
     }
 
 
