@@ -99,7 +99,7 @@ public class CodeGenerator {
         // 【实体】是否为lombok模型（默认 false）
         strategy.setEntityLombokModel(true);
         strategy.setInclude(
-                "user","role","permission","role_permission","user_role"
+                "brand_base"
         );
         // 驼峰转连字符
         strategy.setControllerMappingHyphenStyle(true);
