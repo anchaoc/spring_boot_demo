@@ -1,5 +1,6 @@
 package com.ac.maintest;
 
+import com.ac.common.utils.GsonUtil;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
@@ -30,7 +31,11 @@ public class MainTest {
 
 
     private static void test15(){
-
+        String data ="{ABC_XY=123,CBD_ABC=321}";
+        String data2 = data.replace("=", ":");
+        System.out.println(data2);
+        Map convert = GsonUtil.convert(data2, Map.class);
+        System.out.println(convert);
     }
 
 
