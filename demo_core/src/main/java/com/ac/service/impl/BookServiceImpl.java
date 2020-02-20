@@ -27,4 +27,6 @@ public class BookServiceImpl extends ServiceImpl<BookMapper, Book> implements Bo
     public List<Book> listEnum() {
         return bookMapper.listEnum();
     }
+
+
 }

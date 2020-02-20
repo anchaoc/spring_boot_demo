@@ -16,7 +16,7 @@ import lombok.ToString;
 @TableName("book")
 public class Book{
 
-    @TableId(value = "id", type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.INPUT)
     private Long id;
 
 
