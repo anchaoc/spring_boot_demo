@@ -59,4 +59,16 @@
 //    private RedisSerializer getJackson(){
 //        return new GenericJackson2JsonRedisSerializer();
 //    }
+
+//import org.springframework.context.annotation.Bean;
+//
+//@Bean(name = "redisTemplate")
+//public RedisTemplate<String,Object> getRedisTemplate(RedisConnectionFactory connectionFactory){
+//        RedisTemplate<String,Object> redisTemplate = new RedisTemplate<String,Object> ();
+//        redisTemplate.setConnectionFactory(connectionFactory);
+//        redisTemplate.setValueSerializer(RedisSerializer.string());
+//        redisTemplate.setKeySerializer(RedisSerializer.string());
+//        redisTemplate.afterPropertiesSet();
+//        return redisTemplate;
+//        }
 //}
