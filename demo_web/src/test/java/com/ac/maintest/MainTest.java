@@ -8,6 +8,7 @@ import org.springframework.core.io.ClassPathResource;
 
 import java.io.*;
 import java.lang.reflect.Field;
+import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -25,7 +26,8 @@ import java.util.stream.Collectors;
 public class MainTest {
 
     public static void main(String[] args) throws Exception {
-        test15();
+        //test15();
+        reduce();
     }
 
 
@@ -39,6 +41,16 @@ public class MainTest {
     }
 
 
+    /**
+     * 压缩 求和
+     */
+    private static void reduce(){
+        ArrayList<BigDecimal> objects = Lists.newArrayList();
+        objects.add(BigDecimal.ONE);
+        objects.add(BigDecimal.valueOf(2));
+        BigDecimal reduce = objects.stream().reduce(BigDecimal.ZERO, BigDecimal::add);
+        System.out.println(reduce);
+    }
 
 
 
