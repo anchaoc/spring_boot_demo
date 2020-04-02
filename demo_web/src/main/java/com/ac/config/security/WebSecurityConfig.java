@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -68,7 +69,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureUrl("/login-error").permitAll()
                 .and()
                 .logout()
-                .logoutSuccessUrl("/index");
+                .logoutSuccessUrl("/index")
+                .and()
+                .csrf()
+                .disable()                      // 禁用 Spring Security 自带的跨域处理
+                .sessionManagement()                        // 定制我们自己的 session 策略
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS); // 调整为让 Spring Security 不创建和使用 session
 
     }
 
