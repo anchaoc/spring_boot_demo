@@ -43,7 +43,7 @@ public class CodeGenerator {
         GlobalConfig gc = new GlobalConfig();
         String projectPath = "D:/JAVABEAN";
         gc.setOutputDir(projectPath + "/src/main/java");
-        gc.setAuthor("烹饪姐");
+        gc.setAuthor("anchao");
         gc.setOpen(true);
         gc.setServiceName("%sService");
         gc.setBaseResultMap(true);
@@ -52,16 +52,16 @@ public class CodeGenerator {
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://localhost:3306/test_dev?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=CONVERT_TO_NULL");
+        dsc.setUrl("jdbc:mysql://123.56.234.159:3306/taxbook?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=CONVERT_TO_NULL");
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
-        dsc.setPassword("root");
+        dsc.setPassword("Zs@123456");
         mpg.setDataSource(dsc);
 
         // 包配置
         PackageConfig pc = new PackageConfig();
-        pc.setModuleName("demo");
-        pc.setParent("com.ac");
+        pc.setModuleName("zs");
+        pc.setParent("com.zs");
         pc.setEntity("core.domain");
         pc.setMapper("core.mapper");
         pc.setService("core.service");
@@ -99,7 +99,7 @@ public class CodeGenerator {
         // 【实体】是否为lombok模型（默认 false）
         strategy.setEntityLombokModel(true);
         strategy.setInclude(
-                "site"
+                "zs_assets_liabilities_sheet_data"
         );
         // 驼峰转连字符
         strategy.setControllerMappingHyphenStyle(true);
